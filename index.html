@@ -813,7 +813,13 @@
       gap: 3rem;
       align-items: center;
     }
-    @media(min-width:1024px){ .video-section-grid { grid-template-columns: 1fr 1.6fr; gap: 5rem; } }
+    @media(min-width:1024px){ .video-section-grid { grid-template-columns: 1.6fr 1fr; gap: 5rem; } }
+
+    /* Auf Desktop: Text links, Video rechts — Reihenfolge im HTML bleibt Video zuerst */
+    @media(min-width:1024px){
+      .video-section-grid .video-wrap { order: 2; }
+      .video-section-grid .video-text { order: 1; }
+    }
 
     .video-wrap {
       position: relative;
@@ -821,11 +827,15 @@
       overflow: hidden;
       box-shadow: var(--sh3);
       background: var(--s0);
+      /* Hochformat: zentriert und max-breite begrenzt */
+      max-width: 340px;
+      margin: 0 auto;
     }
 
     .video-aspect {
-      aspect-ratio: 16/9;
+      aspect-ratio: 9/16;
       width: 100%;
+      position: relative;
     }
 
     .video-aspect iframe {
