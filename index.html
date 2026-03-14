@@ -1,0 +1,4037 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sport & Abenteuerreise — Alpen-Retreat Österreich</title>
+  <meta name="description" content="7-Tage Sport- und Abenteuer-Retreat in den österreichischen Alpen. Wandern, Eisbaden, Sport & Spiele, Workshops. Max. 8 Teilnehmer.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════
+       TOKENS
+    ═══════════════════════════════════════════════ */
+    :root {
+      --g:    #1E7A3A;   /* brand green */
+      --g2:   #27A84F;   /* lighter green */
+      --g3:   #E6F7EC;   /* green tint bg */
+      --g4:   #D0F0DB;   /* deeper tint */
+      --acc:  #FF5C2B;   /* orange accent / CTA */
+      --acc2: #FF7A50;   /* hover */
+      --w:    #FFFFFF;
+      --bg:   #F7FAF8;
+      --s0:   #111827;   /* text primary */
+      --s1:   #374151;   /* text secondary */
+      --s2:   #6B7280;   /* muted */
+      --s3:   #D1D5DB;   /* border */
+      --s4:   #F3F4F6;   /* subtle bg */
+
+      --r:    12px;
+      --r2:   20px;
+      --r3:   999px;
+
+      --sh:   0 2px 8px rgba(0,0,0,.06), 0 0 1px rgba(0,0,0,.04);
+      --sh2:  0 8px 32px rgba(0,0,0,.10), 0 0 1px rgba(0,0,0,.05);
+      --sh3:  0 24px 64px rgba(0,0,0,.14);
+
+      --fd:   'Outfit', system-ui, sans-serif;
+      --fb:   'DM Sans', system-ui, sans-serif;
+
+      --mw:   1200px;
+      --ease: cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESET
+    ═══════════════════════════════════════════════ */
+    *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; font-size:16px; }
+    body {
+      font-family: var(--fb);
+      background: var(--w);
+      color: var(--s0);
+      overflow-x: hidden;
+    }
+    img { max-width:100%; display:block; }
+    a { color:inherit; text-decoration:none; }
+    button { cursor:pointer; border:none; background:none; font-family:inherit; }
+
+    /* ═══════════════════════════════════════════════
+       SCROLL PROGRESS BAR
+    ═══════════════════════════════════════════════ */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--g), var(--acc));
+      z-index: 9999;
+      transition: width .1s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SKIP LINK
+    ═══════════════════════════════════════════════ */
+    .skip { position:absolute; top:-100%; left:1rem; background:var(--g); color:#fff; padding:.5rem 1rem; z-index:10000; border-radius:var(--r); }
+    .skip:focus { top:1rem; }
+
+    /* ═══════════════════════════════════════════════
+       UTILITIES
+    ═══════════════════════════════════════════════ */
+    .wrap { max-width:var(--mw); margin:0 auto; padding:0 1.5rem; }
+    @media(min-width:768px){ .wrap { padding:0 2.5rem; } }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-family: var(--fb);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--g);
+      background: var(--g3);
+      padding: .35rem .75rem;
+      border-radius: var(--r3);
+    }
+
+    .tag.orange { color: var(--acc); background: #FFF0EB; }
+
+    /* Pill dot */
+    .tag::before { content:''; width:6px; height:6px; background:currentColor; border-radius:50%; display:block; }
+
+    /* ═══════════════════════════════════════════════
+       BUTTONS
+    ═══════════════════════════════════════════════ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: .85rem 2rem;
+      border-radius: var(--r3);
+      transition: all .22s var(--ease);
+      min-height: 48px;
+      touch-action: manipulation;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.12);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .btn:hover::after { opacity: 1; }
+    .btn:active { transform: scale(.97); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--acc) 0%, #E8441A 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(255,92,43,.35);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 6px 24px rgba(255,92,43,.45);
+      transform: translateY(-1px);
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, var(--g) 0%, #166830 100%);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(30,122,58,.3);
+    }
+    .btn-green:hover {
+      box-shadow: 0 6px 24px rgba(30,122,58,.4);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--s1);
+      border: 1.5px solid var(--s3);
+    }
+    .btn-ghost:hover {
+      border-color: var(--g);
+      color: var(--g);
+      background: var(--g3);
+    }
+
+    .btn-white {
+      background: rgba(255,255,255,.95);
+      color: var(--g);
+      box-shadow: var(--sh2);
+    }
+    .btn-white:hover { background:#fff; box-shadow:var(--sh3); transform:translateY(-1px); }
+
+    /* ═══════════════════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════════════════ */
+    .r {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .r.in { opacity:1; transform:translateY(0); }
+    .r.d1 { transition-delay:.1s; }
+    .r.d2 { transition-delay:.2s; }
+    .r.d3 { transition-delay:.3s; }
+    .r.d4 { transition-delay:.4s; }
+    .r.d5 { transition-delay:.5s; }
+    @media(prefers-reduced-motion:reduce){ .r { opacity:1; transform:none; transition:none; } }
+
+    /* ═══════════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 1rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: calc(100% - 2rem);
+      max-width: 1100px;
+      background: rgba(255,255,255,.7);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: var(--r2);
+      box-shadow: var(--sh2);
+      padding: .75rem 1.25rem;
+      transition: all .3s var(--ease);
+    }
+
+    .nav.scrolled {
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--sh3);
+      padding: .6rem 1.25rem;
+    }
+
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+
+    .nav-logo {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--s0);
+      letter-spacing: -.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--g); }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: var(--fb);
+      font-weight: 500;
+      font-size: .9rem;
+      color: var(--s1);
+      transition: color .2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 2px;
+      background: var(--g);
+      border-radius: 2px;
+      transition: width .25s var(--ease);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--g); }
+    .nav-links a:hover::after, .nav-links a.active::after { width:100%; }
+
+    .nav-cta { display:none; }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: .5rem;
+      min-width: 44px; min-height: 44px;
+      justify-content: center;
+      align-items: center;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--s0);
+      border-radius: 2px;
+      transition: all .3s var(--ease);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile overlay */
+    .mob-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--w);
+      display: flex;
+      flex-direction: column;
+      padding: 5.5rem 2rem 2.5rem;
+      opacity: 0;
+      transform: translateY(-6px);
+      pointer-events: none;
+      transition: opacity .22s var(--ease), transform .22s var(--ease);
+    }
+    .mob-overlay.open { opacity:1; transform:translateY(0); pointer-events:all; }
+    .mob-overlay .mob-link {
+      font-family: var(--fd);
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--s0);
+      letter-spacing: -.02em;
+      padding: .9rem 0;
+      border-bottom: 1px solid var(--s3);
+      transition: color .15s;
+      text-decoration: none;
+      display: block;
+    }
+    .mob-overlay .mob-link:last-of-type { border-bottom: none; }
+    .mob-overlay .mob-link:hover { color: var(--g); }
+    .mob-overlay .btn { margin-top: auto; width: 100%; justify-content: center; text-align: center; display: flex; }
+
+    @media(min-width:1024px){
+      .nav-links { display:flex; }
+      .nav-cta { display:inline-flex; }
+      .hamburger { display:none; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════ */
+    #hero {
+      min-height: 100dvh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--w);
+    }
+
+    /* Animated gradient blob background */
+    .hero-bg-blobs {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .32;
+      animation: blob-float 8s ease-in-out infinite;
+    }
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: var(--g);
+      top: -200px; right: -100px;
+      animation-delay: 0s;
+    }
+    .blob-2 {
+      width: 400px; height: 400px;
+      background: var(--acc);
+      bottom: -100px; left: 10%;
+      animation-delay: -3s;
+    }
+    .blob-3 {
+      width: 300px; height: 300px;
+      background: #4ADE80;
+      top: 30%; left: 40%;
+      animation-delay: -5s;
+    }
+    @keyframes blob-float {
+      0%,100% { transform: translateY(0) scale(1); }
+      33% { transform: translateY(-30px) scale(1.05); }
+      66% { transform: translateY(20px) scale(.96); }
+    }
+    @media(prefers-reduced-motion:reduce){ .blob { animation:none; } }
+    @media(max-width:1023px){
+      .blob-1 { opacity: .12; width: 300px; height: 300px; }
+      .blob-2 { opacity: .06; width: 200px; height: 200px; }
+      .blob-3 { opacity: .08; }
+    }
+
+    /* Hero photo — full bleed background */
+    .hero-photo-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .hero-photo {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center right;
+      opacity: .18;
+      background: linear-gradient(160deg, #2D6A4F 0%, #1B4332 60%, #0D1B12 100%);
+    }
+
+    /* Starkes weißes Overlay — fast reines Weiß */
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.55);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: 72px;
+      padding-bottom: 60px;
+      max-width: 620px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: clamp(3rem, 6.5vw, 6rem);
+      line-height: .96;
+      letter-spacing: -.04em;
+      color: var(--s0);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 .gradient-text {
+      background: linear-gradient(135deg, var(--g) 0%, #27A84F 50%, #34D399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--s2);
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    /* Trust strip */
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .875rem;
+      color: var(--s2);
+      font-weight: 500;
+    }
+    .trust-item svg { color: var(--g); flex-shrink: 0; }
+
+    /* Scroll indicator */
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, var(--s3));
+      animation: scroll-line 2s ease infinite;
+    }
+    @keyframes scroll-line {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+    @media(prefers-reduced-motion:reduce){ .scroll-line { animation:none; } }
+
+    /* ═══════════════════════════════════════════════
+       MARQUEE
+    ═══════════════════════════════════════════════ */
+    .marquee-section {
+      background: var(--g3);
+      overflow: hidden;
+      padding: 1rem 0;
+      border-top: 1px solid var(--g4);
+      border-bottom: 1px solid var(--g4);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 22s linear infinite;
+      width: max-content;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media(prefers-reduced-motion:reduce){ .marquee-track { animation:none; } }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 1.5rem;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .875rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--g);
+      white-space: nowrap;
+    }
+    .marquee-dot {
+      width: 5px; height: 5px;
+      background: var(--acc);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════════════════════
+       STATS SECTION
+    ═══════════════════════════════════════════════ */
+    #zahlen {
+      background: var(--w);
+      padding: 5rem 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    @media(min-width:768px){ .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .stat-card {
+      background: var(--bg);
+      border: 1px solid var(--s3);
+      border-radius: var(--r2);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all .3s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--g), var(--g2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s var(--ease);
+    }
+    .stat-card:hover { border-color:var(--g4); box-shadow:var(--sh2); transform:translateY(-4px); }
+    .stat-card:hover::before { transform:scaleX(1); }
+
+    .stat-num {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--s0);
+      letter-spacing: -.04em;
+      margin-bottom: .5rem;
+    }
+    .stat-num .unit {
+      font-size: 1.5rem;
+      color: var(--g);
+      margin-left: .25rem;
+      vertical-align: middle;
+    }
+    .stat-label {
+      font-size: .875rem;
+      color: var(--s2);
+      font-weight: 500;
+    }
+
+    /* ═══════════════════════════════════════════════
+       RETREAT OVERVIEW
+    ═══════════════════════════════════════════════ */
+    #retreat {
+      background: var(--bg);
+      padding: 6rem 0;
+    }
+
+    .retreat-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media(min-width:1024px){ .retreat-grid { grid-template-columns: 1fr 1fr; gap: 6rem; } }
+
+    .section-heading {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      color: var(--s0);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-sub {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--s1);
+      margin-bottom: 2rem;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .875rem;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: .9375rem;
+      color: var(--s1);
+      line-height: 1.5;
+    }
+    .feature-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      background: var(--g3);
+      border-radius: 50%;
+      border: 1.5px solid var(--g);
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.8 7L9 1' stroke='%231E7A3A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* Image card */
+    .retreat-img-card {
+      position: relative;
+      border-radius: var(--r2);
+      overflow: hidden;
+      box-shadow: var(--sh3);
+    }
+    .retreat-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background: linear-gradient(160deg, #3A7D52 0%, #1E5C35 100%);
+      display: block;
+    }
+    /* Floating badge */
+    .floating-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-radius: var(--r);
+      padding: 1rem 1.25rem;
+      box-shadow: var(--sh2);
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      animation: float-badge 4s ease-in-out infinite;
+    }
+    @keyframes float-badge {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @media(prefers-reduced-motion:reduce){ .floating-badge { animation:none; } }
+    .badge-icon {
+      width: 40px; height: 40px;
+      background: var(--g3);
+      border-radius: .625rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--g);
+      flex-shrink: 0;
+    }
+    .badge-text { display:flex; flex-direction:column; }
+    .badge-title { font-family:var(--fd); font-weight:700; font-size:.9rem; color:var(--s0); line-height:1.2; }
+    .badge-sub { font-size:.775rem; color:var(--s2); }
+
+    /* ═══════════════════════════════════════════════
+       AKTIVITÄTEN — BENTO GRID
+    ═══════════════════════════════════════════════ */
+    #aktivitaeten {
+      background: var(--w);
+      padding: 6rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .bento {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media(min-width:640px){
+      .bento {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(min-width:1024px){
+      .bento {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 260px);
+      }
+      .bento-lg { grid-column: span 2; grid-row: span 2; }
+      .bento-tall { grid-row: span 2; }
+    }
+
+    .bento-card {
+      position: relative;
+      border-radius: var(--r2);
+      overflow: hidden;
+      min-height: 220px;
+      cursor: default;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .bento-card:hover { transform: scale(1.02); box-shadow: var(--sh3); }
+
+    .bento-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .5s var(--ease);
+    }
+    .bento-card:hover .bento-bg { transform: scale(1.06); }
+
+    /* Aktivitäten-Fotos */
+    .bento-1 .bento-bg { background: #2D5A3D url('assets/images/activity-wandern.jpg') center/cover no-repeat; }
+    .bento-2 .bento-bg { background: #1A3550 url('assets/images/activity-eisbaden.jpg') center/cover no-repeat; }
+    .bento-3 .bento-bg { background: #4A2810 url('assets/images/activity-sport.jpg') center/cover no-repeat; }
+    .bento-4 .bento-bg { background: #2A3E1A url('assets/images/activity-workshops.jpg') center/cover no-repeat; }
+
+    .bento-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 55%, transparent 100%);
+    }
+
+    .bento-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem;
+    }
+
+    .bento-badge {
+      display: inline-flex;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: .25rem .625rem;
+      border-radius: var(--r3);
+      margin-bottom: .75rem;
+    }
+
+    .bento-name {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #fff;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: .375rem;
+    }
+
+    .bento-card.bento-lg .bento-name { font-size: 2.25rem; }
+
+    .bento-desc {
+      font-size: .875rem;
+      color: rgba(255,255,255,.65);
+      line-height: 1.5;
+    }
+
+    /* ═══════════════════════════════════════════════
+       AFTERMOVIE
+    ═══════════════════════════════════════════════ */
+    #aftermovie {
+      background: var(--bg);
+      padding: 6rem 0;
+    }
+
+    .video-section-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media(min-width:1024px){ .video-section-grid { grid-template-columns: 1fr 1.6fr; gap: 5rem; } }
+
+    .video-wrap {
+      position: relative;
+      border-radius: var(--r2);
+      overflow: hidden;
+      box-shadow: var(--sh3);
+      background: var(--s0);
+    }
+
+    .video-aspect {
+      aspect-ratio: 16/9;
+      width: 100%;
+    }
+
+    .video-aspect iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .video-placeholder-new {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: linear-gradient(135deg, #1E3A2A 0%, #0D1F16 100%);
+      cursor: pointer;
+    }
+
+    .play-circle {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--acc) 0%, #E03D10 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 0 rgba(255,92,43,.4);
+      animation: pulse-ring 2.5s ease-out infinite;
+      transition: transform .2s var(--ease);
+    }
+    .play-circle:hover { transform: scale(1.1); }
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(255,92,43,.45); }
+      70% { box-shadow: 0 0 0 24px rgba(255,92,43,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,92,43,0); }
+    }
+    @media(prefers-reduced-motion:reduce){ .play-circle { animation:none; } }
+
+    .play-circle svg { margin-left: 5px; }
+
+    .video-label {
+      font-family: var(--fb);
+      font-size: .8125rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.4);
+      letter-spacing: .05em;
+    }
+
+    .video-text h3 {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: clamp(1.75rem, 3vw, 2.75rem);
+      letter-spacing: -.03em;
+      color: var(--s0);
+      margin-bottom: 1rem;
+    }
+
+    .video-text p {
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--s1);
+      margin-bottom: 2rem;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .mini-stat {
+      background: var(--w);
+      border: 1px solid var(--s3);
+      border-radius: var(--r);
+      padding: 1rem;
+      text-align: center;
+    }
+    .mini-stat-num {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -.03em;
+      color: var(--g);
+    }
+    .mini-stat-label {
+      font-size: .75rem;
+      color: var(--s2);
+      font-weight: 500;
+    }
+
+    /* ═══════════════════════════════════════════════
+       GALERIE
+    ═══════════════════════════════════════════════ */
+    #galerie {
+      background: var(--w);
+      padding: 6rem 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .75rem;
+    }
+    @media(min-width:640px){ .gallery-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media(min-width:1024px){ .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; } }
+
+    .g-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--r);
+      cursor: pointer;
+      background: var(--s4);
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .g-item { aspect-ratio: 4/3; }
+    .g-item:hover { transform: scale(1.03); box-shadow: var(--sh2); z-index:2; }
+
+    .g-item img {
+      width:100%; height:100%; object-fit:cover;
+      transition: transform .45s var(--ease);
+    }
+    .g-item:hover img { transform: scale(1.08); }
+
+    .g-item-ov {
+      position: absolute; inset:0;
+      background: rgba(0,0,0,0);
+      transition: background .3s;
+      display: flex; align-items:center; justify-content:center;
+    }
+    .g-item:hover .g-item-ov { background: rgba(0,0,0,.35); }
+    .g-item-ov svg { opacity:0; color:#fff; transition: opacity .25s, transform .25s; transform:scale(.8); }
+    .g-item:hover .g-item-ov svg { opacity:1; transform:scale(1); }
+
+    /* placeholder colors */
+    .g-item:nth-child(1) { background:#2a3d25; }
+    .g-item:nth-child(2) { background:#1e3030; }
+    .g-item:nth-child(3) { background:#3a2a1a; }
+    .g-item:nth-child(4) { background:#1a2a3a; }
+    .g-item:nth-child(5) { background:#2a3a20; }
+    .g-item:nth-child(6) { background:#3a2010; }
+    .g-item:nth-child(7) { background:#1a2e2a; }
+    .g-item:nth-child(8) { background:#202a18; }
+
+    .g-ph {
+      width:100%; height:100%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:.7rem; letter-spacing:.1em; text-transform:uppercase;
+      color:rgba(255,255,255,.25); font-weight:600; text-align:center;
+      padding:.75rem;
+    }
+
+    /* ═══════════════════════════════════════════════
+       FEEDBACK VIDEOS
+    ═══════════════════════════════════════════════ */
+    #stimmen {
+      background: var(--bg);
+      padding: 6rem 0;
+    }
+
+    .stimmen-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media(min-width:640px){ .stimmen-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width:1024px){ .stimmen-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* Mobile: Portrait-Karussell, 3D-Floating-Karten */
+    @media(max-width:639px){
+      #stimmen { background: #EAEEF2; }
+      #stimmen .wrap { overflow: hidden; padding-left: 0; padding-right: 0; }
+      #stimmen .wrap > *:not(.stimmen-grid) { padding: 0 1.5rem; }
+      .stimmen-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding: 1rem 10vw 2.5rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        align-items: flex-start;
+      }
+      .stimmen-grid::-webkit-scrollbar { display: none; }
+      .stimmen-card {
+        min-width: 80vw;
+        width: 80vw;
+        flex-shrink: 0;
+        scroll-snap-align: center;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(0,0,0,.14), 0 3px 10px rgba(0,0,0,.08);
+        background: var(--w);
+        transition: box-shadow .3s;
+      }
+      .stimmen-card:hover { transform: none; box-shadow: 0 16px 48px rgba(0,0,0,.18); }
+      /* Portrait-Thumbnail 9:16 */
+      .sv-thumb {
+        aspect-ratio: 9/16;
+        height: unset;
+      }
+    }
+
+    .stimmen-card {
+      background: var(--w);
+      border: 1px solid var(--s3);
+      border-radius: var(--r2);
+      overflow: hidden;
+      transition: all .3s var(--ease);
+    }
+    .stimmen-card:hover {
+      border-color: var(--g4);
+      box-shadow: var(--sh2);
+      transform: translateY(-4px);
+    }
+
+    .sv-thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--s0);
+    }
+    /* Portrait nur im Lightbox, Thumbnail bleibt 16:9 */
+    #videoLB.portrait .lb-content { width: min(90vw, 380px); }
+    #videoLB.portrait .video-aspect { aspect-ratio: 9/16; }
+    .sv-thumb img {
+      width:100%; height:100%; object-fit:cover;
+      transition: transform .4s var(--ease);
+    }
+    .sv-thumb:hover img { transform: scale(1.05); }
+
+    .sv-overlay {
+      position: absolute; inset:0;
+      background: rgba(0,0,0,.25);
+      display: flex; align-items:center; justify-content:center;
+      transition: background .25s;
+    }
+    .sv-thumb:hover .sv-overlay { background: rgba(0,0,0,.45); }
+
+    .sv-play {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--acc), #E03D10);
+      border-radius: 50%;
+      display: flex; align-items:center; justify-content:center;
+      box-shadow: 0 4px 16px rgba(255,92,43,.5);
+      transition: transform .2s var(--ease), box-shadow .2s;
+    }
+    .sv-thumb:hover .sv-play {
+      transform: scale(1.12);
+      box-shadow: 0 6px 24px rgba(255,92,43,.6);
+    }
+    .sv-play svg { margin-left:3px; }
+
+    /* Placeholder-Farben */
+    .stimmen-card:nth-child(1) .sv-thumb { background: linear-gradient(135deg,#1e3520,#0e1e10); }
+    .stimmen-card:nth-child(2) .sv-thumb { background: linear-gradient(135deg,#1e2835,#0e1520); }
+    .stimmen-card:nth-child(3) .sv-thumb { background: linear-gradient(135deg,#2e1e10,#1a0e06); }
+
+    .sv-body { padding: 1.25rem 1.5rem 1.5rem; }
+
+    .sv-name {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--s0);
+      margin-bottom: .2rem;
+    }
+    .sv-role {
+      font-size: .8125rem;
+      color: var(--s2);
+      margin-bottom: .875rem;
+    }
+    .sv-quote {
+      font-size: .9375rem;
+      line-height: 1.6;
+      color: var(--s1);
+      font-style: italic;
+      border-left: 3px solid var(--g);
+      padding-left: .875rem;
+    }
+
+    /* ═══════════════════════════════════════════════
+       PROGRAMM
+    ═══════════════════════════════════════════════ */
+    /* ═══════════════════════════════════════════════
+       TYPISCHER TAGESABLAUF — TIMELINE
+    ═══════════════════════════════════════════════ */
+    #programm { background: var(--bg); padding: 6rem 0; }
+
+    .tl-wrap {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Vertikale Linie — wächst von oben beim Scrollen */
+    .tl-line {
+      position: absolute;
+      left: 50%;
+      top: 28px; bottom: 28px;
+      width: 2px;
+      background: var(--s3);
+      transform: translateX(-50%) scaleY(0);
+      transform-origin: top center;
+      transition: transform 1.5s cubic-bezier(.4,0,.2,1);
+    }
+    .tl-line.tl-in { transform: translateX(-50%) scaleY(1); }
+
+    /* Zeile: 3 Spalten — linke Karte | Icon-Kreis | rechte Karte */
+    .tl-item {
+      display: grid;
+      grid-template-columns: 1fr 72px 1fr;
+      align-items: center;
+      gap: 0 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Mittlere Spalte */
+    .tl-center {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Großer Icon-Kreis */
+    .tl-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--g);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 18px rgba(30,122,58,.28);
+      transform: scale(0);
+      transition: transform .45s .15s cubic-bezier(.34,1.56,.64,1);
+    }
+    .tl-item.tl-in .tl-icon { transform: scale(1); }
+
+    /* Linker / rechter Slot — Einflug-Animation */
+    .tl-left {
+      opacity: 0; transform: translateX(-22px);
+      transition: opacity .5s var(--ease), transform .5s var(--ease);
+    }
+    .tl-right {
+      opacity: 0; transform: translateX(22px);
+      transition: opacity .5s var(--ease), transform .5s var(--ease);
+    }
+    .tl-item.tl-in .tl-left,
+    .tl-item.tl-in .tl-right { opacity: 1; transform: translateX(0); }
+
+    /* Karte */
+    .tl-card {
+      background: var(--w);
+      border: 1px solid var(--s3);
+      border-radius: var(--r2);
+      padding: 1.125rem 1.375rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.05);
+      transition: box-shadow .25s var(--ease);
+    }
+    .tl-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.09); }
+
+    .tl-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      margin-bottom: .45rem;
+    }
+    .tl-card-title {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .9375rem;
+      color: var(--s0);
+      margin: 0;
+    }
+    .tl-card-time {
+      font-family: var(--fb);
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--g);
+      background: var(--g3);
+      padding: .2rem .65rem;
+      border-radius: var(--r3);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .tl-card-desc {
+      font-family: var(--fb);
+      font-size: .875rem;
+      line-height: 1.6;
+      color: var(--s2);
+      margin: 0;
+    }
+
+    /* Mobile: Icon links, Karte rechts — kein Alternating */
+    @media(max-width:767px) {
+      .tl-line { left: 22px; transform: translateX(0) scaleY(0); }
+      .tl-line.tl-in { transform: translateX(0) scaleY(1); }
+      .tl-item { grid-template-columns: 44px 1fr; gap: 0 1rem; margin-bottom: 1.75rem; }
+      .tl-center { grid-column: 1; grid-row: 1; }
+      .tl-icon { width: 44px; height: 44px; }
+      .tl-left:has(.tl-card),
+      .tl-right:has(.tl-card) { grid-column: 2; grid-row: 1; }
+      .tl-left:not(:has(.tl-card)),
+      .tl-right:not(:has(.tl-card)) { display: none; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      .tl-line { transform: translateX(-50%) scaleY(1) !important; transition: none; }
+      .tl-icon, .tl-left, .tl-right { opacity:1 !important; transform:none !important; transition:none; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════════════ */
+    #faq {
+      background: var(--w);
+      padding: 6rem 0;
+      border-top: 1.5px solid var(--s3);
+    }
+    .faq-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1.5px solid var(--s3);
+    }
+    .faq-item:first-of-type {
+      border-top: 1.5px solid var(--s3);
+    }
+    .faq-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.375rem 0;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.0625rem;
+      color: var(--s0);
+      transition: color .2s;
+    }
+    .faq-header:hover { color: var(--g); }
+    .faq-item.open .faq-header { color: var(--g); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--s4);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--s2);
+      transition: background .2s, color .2s, transform .3s var(--ease);
+    }
+    .faq-item.open .faq-icon {
+      background: var(--g3);
+      color: var(--g);
+      transform: rotate(45deg);
+    }
+    .faq-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .38s var(--ease);
+    }
+    .faq-item.open .faq-body { max-height: 300px; }
+    .faq-answer {
+      padding: 0 0 1.5rem 0;
+      font-size: .9375rem;
+      line-height: 1.75;
+      color: var(--s1);
+    }
+    .faq-answer strong { color: var(--s0); }
+
+    /* ═══════════════════════════════════════════════
+       CTA
+    ═══════════════════════════════════════════════ */
+    #anmeldung {
+      background: var(--s0);
+      padding: 7rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Glowing orbs */
+    .cta-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cta-orb-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(30,122,58,.3) 0%, transparent 70%);
+      top: -200px; left: -100px;
+    }
+    .cta-orb-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,92,43,.2) 0%, transparent 70%);
+      bottom: -150px; right: -50px;
+    }
+
+    .cta-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cta-h2 {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: .96;
+      letter-spacing: -.04em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .cta-h2 span {
+      background: linear-gradient(135deg, var(--g2), #4ADE80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta-sub {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.6);
+      margin-bottom: 2.5rem;
+    }
+    .cta-sub strong { color: rgba(255,255,255,.9); font-weight:600; }
+
+    .cta-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-fine {
+      font-size: .875rem;
+      color: rgba(255,255,255,.35);
+      line-height: 1.8;
+    }
+    .cta-fine strong { color:rgba(255,255,255,.6); font-weight:500; }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════ */
+    footer {
+      background: #0A0F0B;
+      padding: 4rem 0 2rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    @media(min-width:768px){ .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 2rem; } }
+
+    .footer-logo {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 1.125rem;
+      color: #fff;
+      letter-spacing: -.02em;
+      margin-bottom: .625rem;
+    }
+    .footer-logo span { color: var(--g2); }
+
+    .footer-tagline {
+      font-size: .875rem;
+      color: rgba(255,255,255,.35);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-socials { display:flex; gap:.75rem; }
+    .footer-socials a {
+      width:38px; height:38px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: .625rem;
+      display:flex; align-items:center; justify-content:center;
+      color:rgba(255,255,255,.4);
+      transition: all .2s;
+    }
+    .footer-socials a:hover {
+      background: var(--g3);
+      border-color: var(--g);
+      color: var(--g);
+    }
+
+    .footer-col-title {
+      font-size:.7rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.3);
+      margin-bottom:1rem;
+    }
+
+    .footer-links { list-style:none; display:flex; flex-direction:column; gap:.625rem; }
+    .footer-links a {
+      font-size:.875rem;
+      color:rgba(255,255,255,.4);
+      transition:color .2s;
+    }
+    .footer-links a:hover { color:rgba(255,255,255,.85); }
+
+    .footer-contact-line {
+      display:flex; align-items:center; gap:.625rem;
+      font-size:.875rem;
+      color:rgba(255,255,255,.4);
+      margin-bottom:.625rem;
+    }
+    .footer-contact-line svg { color:var(--g2); flex-shrink:0; }
+    .footer-contact-line a { transition:color .2s; }
+    .footer-contact-line a:hover { color:rgba(255,255,255,.85); }
+
+    .footer-bottom {
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+      justify-content:space-between;
+      align-items:center;
+      padding-top:1.5rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-copy { font-size:.8125rem; color:rgba(255,255,255,.2); }
+    .footer-legal { display:flex; gap:1.5rem; }
+    .footer-legal a { font-size:.8125rem; color:rgba(255,255,255,.2); transition:color .2s; }
+    .footer-legal a:hover { color:rgba(255,255,255,.5); }
+
+    /* ═══════════════════════════════════════════════
+       LIGHTBOXES
+    ═══════════════════════════════════════════════ */
+    .lb {
+      position:fixed; inset:0; z-index:2000;
+      background:rgba(0,0,0,.9);
+      backdrop-filter:blur(16px);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; pointer-events:none;
+      transition:opacity .3s var(--ease);
+    }
+    .lb.open { opacity:1; pointer-events:all; }
+
+    .lb-close {
+      position:absolute; top:1.25rem; right:1.25rem;
+      width:44px; height:44px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:.625rem;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff;
+      transition:background .2s;
+    }
+    .lb-close:hover { background:rgba(255,255,255,.15); }
+
+    .lb-content { position:relative; max-width:92vw; }
+    #galleryLB .lb-img {
+      max-width:90vw; max-height:88vh;
+      object-fit:contain; border-radius:var(--r);
+      display:block;
+    }
+
+    .lb-arr {
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:44px; height:44px;
+      background:rgba(0,0,0,.5);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:.5rem;
+      display:flex; align-items:center; justify-content:center;
+      color:#fff;
+      transition:background .2s;
+    }
+    .lb-arr:hover { background:rgba(0,0,0,.75); }
+    .lb-prev { left:calc(-44px - .75rem); }
+    .lb-next { right:calc(-44px - .75rem); }
+    @media(max-width:600px){
+      .lb-prev { left:.5rem; }
+      .lb-next { right:.5rem; }
+    }
+
+    #videoLB .lb-content { width:min(90vw,960px); }
+    #videoLB .video-aspect { width:100%; }
+    #videoLB .video-aspect iframe { position:absolute; inset:0; width:100%; height:100%; border:none; border-radius:var(--r); }
+
+    /* ═══════════════════════════════════════════════
+       SUBPAGE SYSTEM
+    ═══════════════════════════════════════════════ */
+    body.subpage-open > #progress-bar,
+    body.subpage-open > .skip,
+    body.subpage-open > .nav,
+    body.subpage-open > .mob-overlay,
+    body.subpage-open > main,
+    body.subpage-open > footer { display: none !important; }
+
+    .subpage-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 800;
+      background: var(--w);
+      overflow-y: auto;
+    }
+    .subpage-overlay.active { display: block; }
+
+    /* Subpage top bar */
+    .sp-bar {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--s3);
+      z-index: 10;
+      padding: .875rem 0;
+    }
+    .sp-bar-inner {
+      max-width: var(--mw);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    @media(min-width:768px){ .sp-bar-inner { padding: 0 2.5rem; } }
+
+    .sp-back {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-family: var(--fb);
+      font-weight: 600;
+      font-size: .875rem;
+      color: var(--s2);
+      cursor: pointer;
+      transition: color .2s;
+      border: none;
+      background: none;
+      padding: .25rem 0;
+      min-height: 44px;
+    }
+    .sp-back:hover { color: var(--g); }
+
+    .sp-logo {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--s0);
+      letter-spacing: -.02em;
+    }
+    .sp-logo span { color: var(--g); }
+
+    .sp-content {
+      max-width: var(--mw);
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+    @media(min-width:768px){ .sp-content { padding: 4rem 2.5rem 6rem; } }
+
+    /* ═══════════════════════════════════════════════
+       IMPRESSUM
+    ═══════════════════════════════════════════════ */
+    .imp-header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--s3);
+    }
+    .imp-header h1 {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: -.03em;
+      color: var(--s0);
+      margin-bottom: .75rem;
+    }
+    .imp-header p {
+      font-size: 1rem;
+      color: var(--s2);
+    }
+    .imp-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    @media(min-width:768px){ .imp-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; } }
+
+    .imp-block h2 {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--s0);
+      margin-bottom: .75rem;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid var(--g3);
+    }
+    .imp-block p, .imp-block address {
+      font-size: .9375rem;
+      line-height: 1.8;
+      color: var(--s1);
+      font-style: normal;
+    }
+    .imp-block a { color: var(--g); text-decoration: underline; text-underline-offset: 2px; }
+    .imp-block a:hover { color: var(--g2); }
+    .imp-placeholder {
+      background: var(--g3);
+      border: 1.5px dashed var(--g);
+      border-radius: var(--r);
+      padding: .75rem 1rem;
+      font-size: .8125rem;
+      color: var(--g);
+      font-weight: 600;
+      margin-top: .5rem;
+      letter-spacing: .03em;
+    }
+
+    /* ═══════════════════════════════════════════════
+       BUCHUNG — MULTISTEP
+    ═══════════════════════════════════════════════ */
+    .bk-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media(min-width:1024px){ .bk-layout { grid-template-columns: 1fr 380px; gap: 3.5rem; } }
+
+    /* Steps indicator */
+    .bk-steps {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      overflow-x: auto;
+      padding-bottom: .25rem;
+    }
+    .bk-step-item {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+    }
+    .bk-step-item:last-child .bk-step-line { display: none; }
+
+    .bk-step-dot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--s3);
+      background: var(--w);
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: .8125rem;
+      color: var(--s2);
+      transition: all .3s var(--ease);
+      flex-shrink: 0;
+    }
+    .bk-step-item.done .bk-step-dot {
+      background: var(--g);
+      border-color: var(--g);
+      color: #fff;
+    }
+    .bk-step-item.active .bk-step-dot {
+      background: var(--w);
+      border-color: var(--g);
+      color: var(--g);
+      box-shadow: 0 0 0 4px var(--g3);
+    }
+    .bk-step-label {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--s2);
+      margin-left: .5rem;
+      white-space: nowrap;
+      display: none;
+    }
+    @media(min-width:640px){ .bk-step-label { display: block; } }
+    .bk-step-item.active .bk-step-label,
+    .bk-step-item.done .bk-step-label { color: var(--s0); }
+
+    .bk-step-line {
+      flex: 1;
+      min-width: 1.5rem;
+      height: 2px;
+      background: var(--s3);
+      margin: 0 .5rem;
+      transition: background .3s;
+    }
+    .bk-step-item.done .bk-step-line { background: var(--g); }
+
+    /* Step card */
+    .bk-card {
+      background: var(--w);
+      border: 1px solid var(--s3);
+      border-radius: var(--r2);
+      padding: 2rem;
+    }
+    @media(min-width:640px){ .bk-card { padding: 2.5rem; } }
+
+    .bk-step-content { display: none; }
+    .bk-step-content.active { display: block; }
+
+    .bk-step-title {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -.02em;
+      color: var(--s0);
+      margin-bottom: .375rem;
+    }
+    .bk-step-desc {
+      font-size: .9375rem;
+      color: var(--s2);
+      margin-bottom: 2rem;
+    }
+
+    /* Form grid */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media(min-width:540px){ .form-grid-2 { grid-template-columns: 1fr 1fr; } }
+
+    .form-field { display: flex; flex-direction: column; gap: .4rem; }
+
+    .form-label {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--s0);
+    }
+    .form-label .req { color: var(--acc); margin-left: 2px; }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      font-family: var(--fb);
+      font-size: .9375rem;
+      color: var(--s0);
+      background: var(--w);
+      border: 1.5px solid var(--s3);
+      border-radius: var(--r);
+      padding: .75rem 1rem;
+      transition: border-color .2s, box-shadow .2s;
+      min-height: 48px;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--s2); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--g);
+      box-shadow: 0 0 0 3px var(--g3);
+    }
+    .form-input.error, .form-select.error { border-color: #EF4444; }
+    .form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+    /* Custom select arrow */
+    .form-select-wrap { position: relative; }
+    .form-select-wrap::after {
+      content: '';
+      pointer-events: none;
+      position: absolute;
+      right: 1rem; top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid var(--s2);
+    }
+    .form-select { padding-right: 2.5rem; }
+
+    /* Button group (level selector) */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .btn-option {
+      font-family: var(--fb);
+      font-size: .875rem;
+      font-weight: 600;
+      padding: .5rem 1rem;
+      border-radius: var(--r3);
+      border: 1.5px solid var(--s3);
+      background: var(--w);
+      color: var(--s1);
+      cursor: pointer;
+      transition: all .2s var(--ease);
+      min-height: 40px;
+    }
+    .btn-option:hover { border-color: var(--g); color: var(--g); background: var(--g3); }
+    .btn-option.selected { background: var(--g); border-color: var(--g); color: #fff; }
+
+    /* Radio-style cards for yes/no */
+    .radio-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .625rem;
+    }
+    .radio-card {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      padding: .875rem 1rem;
+      border: 1.5px solid var(--s3);
+      border-radius: var(--r);
+      cursor: pointer;
+      transition: all .2s;
+      font-size: .9375rem;
+      font-weight: 500;
+      color: var(--s1);
+    }
+    .radio-card input { display: none; }
+    .radio-card:has(input:checked),
+    .radio-card.checked {
+      border-color: var(--g);
+      background: var(--g3);
+      color: var(--g);
+    }
+    .radio-dot {
+      width: 18px; height: 18px;
+      border: 2px solid var(--s3);
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: all .2s;
+      position: relative;
+    }
+    .radio-card.checked .radio-dot {
+      border-color: var(--g);
+      background: var(--g);
+    }
+    .radio-card.checked .radio-dot::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    /* Conditional field */
+    .cond-field { display: none; margin-top: .75rem; }
+    .cond-field.visible { display: block; }
+
+    /* Step nav buttons */
+    .bk-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--s3);
+      gap: 1rem;
+    }
+
+    /* ═══ PACKAGE CARDS ═══ */
+    .package-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    @media(min-width:500px){ .package-cards { grid-template-columns: 1fr 1fr; } }
+
+    .pkg-card {
+      border: 2px solid var(--s3);
+      border-radius: var(--r2);
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all .25s var(--ease);
+      position: relative;
+      background: var(--w);
+    }
+    .pkg-card:hover { border-color: var(--g4); box-shadow: var(--sh); }
+    .pkg-card.selected { border-color: var(--g); background: var(--g3); }
+    .pkg-card.selected::after {
+      content: '✓';
+      position: absolute;
+      top: .75rem; right: .875rem;
+      width: 22px; height: 22px;
+      background: var(--g);
+      border-radius: 50%;
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 22px;
+      text-align: center;
+    }
+    .pkg-badge {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--acc);
+      background: #FFF0EB;
+      padding: .2rem .6rem;
+      border-radius: var(--r3);
+      display: inline-block;
+      margin-bottom: .625rem;
+    }
+    .pkg-name {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 1.125rem;
+      color: var(--s0);
+      margin-bottom: .25rem;
+    }
+    .pkg-price {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: -.03em;
+      color: var(--g);
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .pkg-price sub {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--s2);
+      vertical-align: baseline;
+      letter-spacing: 0;
+    }
+    .pkg-features {
+      list-style: none;
+      font-size: .8125rem;
+      color: var(--s1);
+      line-height: 2;
+    }
+
+    /* Payment section */
+    .payment-section {
+      border: 1.5px solid var(--s3);
+      border-radius: var(--r2);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .payment-title {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--s0);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .payment-title svg { color: var(--g); }
+
+    .payment-placeholder {
+      background: var(--s4);
+      border: 1.5px dashed var(--s3);
+      border-radius: var(--r);
+      padding: 1.25rem;
+      text-align: center;
+      color: var(--s2);
+      font-size: .875rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    .payment-placeholder strong { color: var(--s0); display: block; font-weight: 700; font-size: .95rem; margin-bottom: .25rem; }
+
+    .payment-methods {
+      display: flex;
+      gap: .625rem;
+      flex-wrap: wrap;
+      margin-top: .75rem;
+      justify-content: center;
+    }
+    .pay-method {
+      border: 1.5px solid var(--s3);
+      border-radius: var(--r);
+      padding: .5rem 1rem;
+      font-size: .8125rem;
+      font-weight: 700;
+      color: var(--s1);
+      background: var(--w);
+    }
+
+    /* Order summary sidebar */
+    .bk-summary {
+      background: var(--bg);
+      border: 1px solid var(--s3);
+      border-radius: var(--r2);
+      padding: 1.75rem;
+      position: sticky;
+      top: 5rem;
+    }
+    .sum-title {
+      font-family: var(--fd);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--s0);
+      margin-bottom: 1.25rem;
+      padding-bottom: .875rem;
+      border-bottom: 1px solid var(--s3);
+    }
+    .sum-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      font-size: .875rem;
+      color: var(--s1);
+      margin-bottom: .625rem;
+      gap: .5rem;
+    }
+    .sum-row strong { color: var(--s0); font-weight: 600; text-align: right; }
+    .sum-divider { border: none; border-top: 1px solid var(--s3); margin: 1rem 0; }
+    .sum-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--s0);
+      margin-bottom: 1.5rem;
+    }
+    .sum-total span:last-child { color: var(--g); }
+    .sum-note {
+      font-size: .8125rem;
+      color: var(--s2);
+      line-height: 1.6;
+      margin-top: 1rem;
+    }
+    .sum-include {
+      list-style: none;
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .sum-include li {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .8125rem;
+      color: var(--s1);
+    }
+    .sum-include li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 16px; height: 16px;
+      background: var(--g3);
+      border-radius: 50%;
+      background-image: url("data:image/svg+xml,%3Csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3L3 5L7 1' stroke='%231E7A3A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    /* Success screen */
+    .bk-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 0;
+    }
+    .bk-success.active { display: block; }
+    .success-icon {
+      width: 80px; height: 80px;
+      background: var(--g3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      color: var(--g);
+    }
+    .bk-success h2 {
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: -.03em;
+      color: var(--s0);
+      margin-bottom: .75rem;
+    }
+    .bk-success p { font-size: 1.0625rem; color: var(--s1); line-height: 1.7; max-width: 460px; margin: 0 auto 2rem; }
+
+    /* Error message */
+    .field-error {
+      font-size: .8rem;
+      color: #EF4444;
+      font-weight: 500;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+  </style>
+</head>
+
+<body>
+  <!-- Progress bar -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <a href="#main" class="skip">Zum Inhalt</a>
+
+  <!-- ═══════════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════════ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Sport &<span> Abenteuer</span></a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#retreat">Retreat</a></li>
+        <li><a href="#aktivitaeten">Aktivitäten</a></li>
+        <li><a href="#aftermovie">Film</a></li>
+        <li><a href="#stimmen">Stimmen</a></li>
+        <li><a href="#programm">Programm</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#termine">Termine</a></li>
+      </ul>
+
+      <a href="#buchung" class="btn btn-primary nav-cta sp-trigger" data-page="buchung" style="padding:.65rem 1.5rem;font-size:.9rem;">Jetzt buchen</a>
+
+      <button class="hamburger" id="hbg" aria-expanded="false" aria-label="Menü">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="mob-overlay" id="mobOverlay" role="dialog" aria-modal="true" aria-label="Navigation">
+    <a href="#retreat"       class="mob-link">Retreat</a>
+    <a href="#aktivitaeten"  class="mob-link">Aktivitäten</a>
+    <a href="#aftermovie"    class="mob-link">Aftermovie</a>
+    <a href="#stimmen"       class="mob-link">Stimmen</a>
+    <a href="#programm"      class="mob-link">Programm</a>
+    <a href="#faq"           class="mob-link">FAQ</a>
+    <a href="#termine"       class="mob-link">Termine</a>
+    <a href="#buchung" class="btn btn-primary sp-trigger mob-link" data-page="buchung" style="margin-top:.5rem;">Jetzt buchen</a>
+  </div>
+
+  <main id="main">
+
+    <!-- ═══════════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════════ -->
+    <section id="hero" aria-labelledby="hero-h1">
+      <div class="hero-bg-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+      </div>
+
+      <div class="hero-photo-wrap" aria-hidden="true">
+        <img src="assets/images/area-1.webp" alt="Luftaufnahme der österreichischen Alpen — grüne Täler und kristallklare Seen" class="hero-photo" loading="eager">
+      </div>
+
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="hero-eyebrow r">
+            <span class="tag">Österreich · Alpen</span>
+            <span class="tag orange">Sommer 2026</span>
+          </div>
+
+          <h1 class="hero-h1 r d1" id="hero-h1">
+            Dein Sommer<br>
+            <span class="gradient-text">in den Bergen.</span>
+          </h1>
+
+          <p class="hero-sub r d2">
+            6 Tage Sport, Abenteuer und echte Natur in den österreichischen Alpen —
+            für Menschen, die mehr wollen als Urlaub.
+          </p>
+
+          <div class="hero-ctas r d3">
+            <a href="#buchung" class="btn btn-primary sp-trigger" data-page="buchung">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+              Jetzt buchen
+            </a>
+            <a href="#aftermovie" class="btn btn-ghost">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+              Film ansehen
+            </a>
+          </div>
+
+          <div class="hero-trust r d4">
+            <div class="trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Max. 8 Plätze
+            </div>
+            <div class="trust-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              All-inclusive
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         MARQUEE
+    ═══════════════════════════════════════════════ -->
+    <div class="marquee-section" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack">
+        <!-- duplicated for seamless loop -->
+        <div class="marquee-item">Wandern <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Eisbaden <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Sport &amp; Spiele <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Workshops <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Österreichische Alpen <span class="marquee-dot"></span></div>
+        <div class="marquee-item">6 Tage <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Wandern <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Eisbaden <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Sport &amp; Spiele <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Workshops <span class="marquee-dot"></span></div>
+        <div class="marquee-item">Österreichische Alpen <span class="marquee-dot"></span></div>
+        <div class="marquee-item">6 Tage <span class="marquee-dot"></span></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         STATS
+    ═══════════════════════════════════════════════ -->
+    <section id="zahlen" aria-label="Zahlen">
+      <div class="wrap">
+        <div class="stats-grid">
+          <div class="stat-card r">
+            <div class="stat-num"><span class="counter" data-target="8">0</span></div>
+            <div class="stat-label">Plätze pro Retreat</div>
+          </div>
+          <div class="stat-card r d1">
+            <div class="stat-num"><span class="counter" data-target="6">0</span></div>
+            <div class="stat-label">Tage Abenteuer &amp; Sportprogramm</div>
+          </div>
+          <div class="stat-card r d2">
+            <div class="stat-num"><span style="font-size:2.5rem;">5</span><span class="unit">+</span></div>
+            <div class="stat-label">Gemeinsame Abenteuer</div>
+          </div>
+          <div class="stat-card r d3">
+            <div class="stat-num"><span style="font-size:2.5rem;">100</span><span class="unit">%</span></div>
+            <div class="stat-label">Geld-zurück-Garantie</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         RETREAT OVERVIEW
+    ═══════════════════════════════════════════════ -->
+    <section id="retreat" aria-labelledby="retreat-h2">
+      <div class="wrap">
+        <div class="retreat-grid">
+          <div>
+            <div class="r" style="margin-bottom:1.25rem;"><span class="tag">Das Retreat</span></div>
+            <h2 class="section-heading r d1" id="retreat-h2">
+              Mehr als ein Urlaub.<br>
+              Eine Erfahrung.
+            </h2>
+            <p class="section-sub r d2">
+              Kein Massentourismus. Kein Kompromiss. Das Sport & Abenteuerreise-Retreat
+              bringt maximal acht ausgewählte Teilnehmer für eine Woche tief in die österreichischen Alpen —
+              geführt von echten Experten.
+            </p>
+            <ul class="feature-list r d3">
+              <li>Intensive Wanderungen durch die Berge Österreichs</li>
+              <li>Eisbaden in kristallklarem Wasser</li>
+              <li>Jeden Tag Sport &amp; Spiele — Volleyball, Workouts, Laufen und mehr</li>
+              <li>Workshops zu Persönlichkeitsentwicklung &amp; Journaling</li>
+              <li>Luxuriöse Unterkunft mit Sauna zur Entspannung</li>
+              <li>Kleine Gruppe aus Gleichgesinnten — max. 8 Teilnehmer</li>
+            </ul>
+          </div>
+
+          <div class="r d2">
+            <div class="retreat-img-card">
+              <img src="assets/images/dji_fly_20250913_143428_0171_1758134322249_timed.jpg" alt="Gruppe am Gipfelkreuz beim Sport &amp; Abenteuerreise Retreat" class="retreat-img" loading="lazy">
+              <div class="floating-badge" aria-hidden="true">
+                <div class="badge-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                </div>
+                <div class="badge-text">
+                  <span class="badge-title">Nächster Retreat</span>
+                  <span class="badge-sub">Sommer 2026 · Tirol, AT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         AKTIVITÄTEN
+    ═══════════════════════════════════════════════ -->
+    <section id="aktivitaeten" aria-labelledby="akt-h2">
+      <div class="wrap">
+        <div class="section-header">
+          <div>
+            <div class="r" style="margin-bottom:1rem;"><span class="tag">Aktivitäten</span></div>
+            <h2 class="section-heading r d1" id="akt-h2" style="margin-bottom:0;">
+              Abenteuer.<br>Jeden Tag.
+            </h2>
+          </div>
+        </div>
+
+        <div class="bento">
+          <!-- Wandern (groß) -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-wandern.jpg -->
+          <article class="bento-card bento-lg bento-1 r" aria-label="Wandern">
+            <div class="bento-bg" role="img" aria-label="Wandern in den Alpen"></div>
+            <div class="bento-overlay" aria-hidden="true"></div>
+            <div class="bento-info">
+              <span class="bento-badge">Alle Level</span>
+              <h3 class="bento-name">Wandern</h3>
+              <p class="bento-desc">Intensive Touren durch die Berge Österreichs — mit Panorama, das bleibt.</p>
+            </div>
+          </article>
+
+          <!-- Eisbaden -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-eisbaden.jpg -->
+          <article class="bento-card bento-2 r d1" aria-label="Eisbaden">
+            <div class="bento-bg" role="img" aria-label="Eisbaden in kristallklarem Wasser"></div>
+            <div class="bento-overlay" aria-hidden="true"></div>
+            <div class="bento-info">
+              <span class="bento-badge">Täglich</span>
+              <h3 class="bento-name">Eisbaden</h3>
+              <p class="bento-desc">Kristallklares Wasser. Maximale Erfrischung.</p>
+            </div>
+          </article>
+
+          <!-- Sport & Spiele -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-sport.jpg -->
+          <article class="bento-card bento-3 r d2" aria-label="Sport & Spiele">
+            <div class="bento-bg" role="img" aria-label="Sport und Spiele"></div>
+            <div class="bento-overlay" aria-hidden="true"></div>
+            <div class="bento-info">
+              <span class="bento-badge">Jeden Tag</span>
+              <h3 class="bento-name">Sport &amp; Spiele</h3>
+              <p class="bento-desc">Volleyball, Workouts, Laufen und vieles mehr.</p>
+            </div>
+          </article>
+
+          <!-- Workshops -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-workshops.jpg -->
+          <article class="bento-card bento-4 r d3" aria-label="Workshops & Reflexion">
+            <div class="bento-bg" role="img" aria-label="Workshops und Reflexion"></div>
+            <div class="bento-overlay" aria-hidden="true"></div>
+            <div class="bento-info">
+              <span class="bento-badge">Täglich</span>
+              <h3 class="bento-name">Workshops</h3>
+              <p class="bento-desc">Journaling, Reflexion &amp; Persönlichkeitsentwicklung.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         AFTERMOVIE
+    ═══════════════════════════════════════════════ -->
+    <section id="aftermovie" aria-labelledby="am-h2">
+      <div class="wrap">
+        <div class="video-section-grid">
+          <!-- Video -->
+          <div class="video-wrap r">
+            <div class="video-aspect" style="position:relative;">
+              <iframe
+                src="https://www.youtube.com/embed/AFTERMOVIE_ID?rel=0&modestbranding=1"
+                title="Sport & Abenteuerreise — Aftermovie"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+                style="position:absolute;inset:0;width:100%;height:100%;border:none;">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Text -->
+          <div class="video-text r d1">
+            <div style="margin-bottom:1.25rem;"><span class="tag">Das Aftermovie</span></div>
+            <h2 id="am-h2">Das letzte Retreat — in drei Minuten.</h2>
+            <p>
+              Schau rein und erleb, was dich erwartet. Ein echter Einblick in sechs Tage
+              Abenteuer, Gemeinschaft und Wachstum in den österreichischen Alpen.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         GALERIE
+    ═══════════════════════════════════════════════ -->
+    <section id="galerie" aria-labelledby="gal-h2">
+      <div class="wrap">
+        <div style="margin-bottom:1rem;" class="r"><span class="tag">Galerie</span></div>
+        <h2 class="section-heading r d1" id="gal-h2" style="margin-bottom:2.5rem;">
+          Eindrücke vom Retreat.
+        </h2>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <div class="g-item r" data-src="assets/images/gallery-01.jpg" tabindex="0" role="button" aria-label="Unterkunft — Chalet Außenansicht">
+            <img src="assets/images/gallery-01.jpg" alt="Chalet Außenansicht mit Bergpanorama" loading="lazy" width="600" height="800">
+            <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="g-item r d1" data-src="assets/images/gallery-02.jpg" tabindex="0" role="button" aria-label="Unterkunft — Zimmer &amp; Bad">
+            <img src="assets/images/gallery-02.jpg" alt="Helles Schlafzimmer und Badezimmer der Retreat-Unterkunft" loading="lazy" width="600" height="800">
+            <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="g-item r d2" data-src="assets/images/gallery-03.jpg" tabindex="0" role="button" aria-label="Unterkunft — Sauna">
+            <img src="assets/images/gallery-03.jpg" alt="Sauna zur Regeneration nach dem Sport" loading="lazy" width="600" height="800">
+            <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="g-item r d3" data-src="assets/images/gallery-04.jpg" tabindex="0" role="button" aria-label="Gemeinsames Abendessen">
+            <img src="assets/images/gallery-04.jpg" alt="Teilnehmer beim gemeinsamen Abendessen am langen Tisch" loading="lazy" width="600" height="800">
+            <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="g-item r" data-src="assets/images/gallery-05.jpg" tabindex="0" role="button" aria-label="Mountainbike-Tour">
+            <img src="assets/images/gallery-05.jpg" alt="Gruppe bei der Mountainbike-Tour durch die Alpen" loading="lazy" width="600" height="800">
+            <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="g-item r d1" data-src="assets/images/area-2.webp" tabindex="0" role="button" aria-label="Beachvolleyball mit Bergpanorama">
+            <img src="assets/images/area-2.webp" alt="Beachvolleyball mit Bergpanorama" loading="lazy" width="600" height="800">
+            <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="g-item r d2" data-src="assets/images/gallery-07.jpg" tabindex="0" role="button" aria-label="Gipfelerlebnis">
+            <img src="assets/images/gallery-07.jpg" alt="Person auf dem Berggipfel mit erhobenen Armen" loading="lazy" width="600" height="800">
+            <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+          <div class="g-item r d3" data-src="assets/images/gallery-08.jpg" tabindex="0" role="button" aria-label="Naturlandschaft">
+            <img src="assets/images/gallery-08.jpg" alt="Luftaufnahme der Seenlandschaft in den Alpen" loading="lazy" width="600" height="800">
+            <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         FEEDBACK VIDEOS
+    ═══════════════════════════════════════════════ -->
+    <section id="stimmen" aria-labelledby="stim-h2">
+      <div class="wrap">
+        <div style="margin-bottom:1rem;" class="r"><span class="tag">Stimmen</span></div>
+        <h2 class="section-heading r d1" id="stim-h2" style="margin-bottom:2.5rem;">
+          Hör es von denen,<br>die dabei waren.
+        </h2>
+
+        <div class="stimmen-grid">
+
+          <!--
+            ═══════════════════════════════════════════
+            FEEDBACK VIDEO 1 — EINFÜGEN:
+            1. Setze data-video-id="DEINE_YOUTUBE_ID"
+            2. Füge <img src="https://img.youtube.com/vi/ID/maxresdefault.jpg"> hinzu
+            3. Tausche Name, Rolle, Zitat aus
+            ═══════════════════════════════════════════
+          -->
+
+          <div class="stimmen-card r">
+            <div class="sv-thumb sv-thumb--portrait" data-video-id="v7u7SWa-Tu0" role="button" tabindex="0" aria-label="Feedback-Video abspielen">
+              <img src="https://img.youtube.com/vi/v7u7SWa-Tu0/maxresdefault.jpg" alt="Simon — Feedback-Video" loading="lazy">
+              <div class="sv-overlay" aria-hidden="true">
+                <div class="sv-play">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="sv-body">
+              <p class="sv-name">Simon</p>
+              <p class="sv-role">Unternehmer</p>
+              <blockquote class="sv-quote">"Zitat hier einfügen."</blockquote>
+            </div>
+          </div>
+
+          <div class="stimmen-card r d1">
+            <div class="sv-thumb" data-video-id="YOUTUBE_ID_2" role="button" tabindex="0" aria-label="Feedback-Video abspielen">
+              <div class="sv-overlay" aria-hidden="true">
+                <div class="sv-play">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="sv-body">
+              <p class="sv-name">Name Teilnehmer/in</p>
+              <p class="sv-role">Beschreibung · Herkunft</p>
+              <blockquote class="sv-quote">"Zitat hier einfügen."</blockquote>
+            </div>
+          </div>
+
+          <div class="stimmen-card r d2">
+            <div class="sv-thumb" data-video-id="YOUTUBE_ID_3" role="button" tabindex="0" aria-label="Feedback-Video abspielen">
+              <div class="sv-overlay" aria-hidden="true">
+                <div class="sv-play">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="sv-body">
+              <p class="sv-name">Name Teilnehmer/in</p>
+              <p class="sv-role">Beschreibung · Herkunft</p>
+              <blockquote class="sv-quote">"Zitat hier einfügen."</blockquote>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         TYPISCHER TAGESABLAUF
+    ═══════════════════════════════════════════════ -->
+    <section id="programm" aria-labelledby="prog-h2">
+      <div class="wrap">
+        <div style="margin-bottom:1rem;" class="r"><span class="tag">Tagesablauf</span></div>
+        <h2 class="section-heading r d1" id="prog-h2" style="margin-bottom:1rem;">
+          Ein typischer Tag.
+        </h2>
+        <p class="r d2" style="font-size:.9375rem;line-height:1.75;color:var(--s2);max-width:640px;margin-bottom:3rem;">
+          Kein fester Stundenplan — aber eine Struktur, die Energie gibt. Jeder Tag hat seinen eigenen Rhythmus.
+        </p>
+
+        <div class="tl-wrap r">
+          <div class="tl-line" aria-hidden="true"></div>
+
+          <!-- 1: LINKS -->
+          <div class="tl-item">
+            <div class="tl-left">
+              <div class="tl-card">
+                <div class="tl-card-header">
+                  <p class="tl-card-title">Morgenroutine</p>
+                  <span class="tl-card-time">08:00</span>
+                </div>
+                <p class="tl-card-desc">Sanftes Aufwachen mit Bewegung, Meditation oder Journaling.</p>
+              </div>
+            </div>
+            <div class="tl-center">
+              <div class="tl-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              </div>
+            </div>
+            <div class="tl-right"></div>
+          </div>
+
+          <!-- 2: RECHTS -->
+          <div class="tl-item">
+            <div class="tl-left"></div>
+            <div class="tl-center">
+              <div class="tl-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+              </div>
+            </div>
+            <div class="tl-right">
+              <div class="tl-card">
+                <div class="tl-card-header">
+                  <p class="tl-card-title">Frühstück</p>
+                  <span class="tl-card-time">09:00</span>
+                </div>
+                <p class="tl-card-desc">Gesundes Frühstück mit frischen Zutaten &amp; guten Gesprächen.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3: LINKS -->
+          <div class="tl-item">
+            <div class="tl-left">
+              <div class="tl-card">
+                <div class="tl-card-header">
+                  <p class="tl-card-title">Sport Session</p>
+                  <span class="tl-card-time">10:30</span>
+                </div>
+                <p class="tl-card-desc">Volleyball, Spikeball, Padel, Frisbee, Workouts, Eisbaden &amp; mehr.</p>
+              </div>
+            </div>
+            <div class="tl-center">
+              <div class="tl-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+            </div>
+            <div class="tl-right"></div>
+          </div>
+
+          <!-- 4: RECHTS -->
+          <div class="tl-item">
+            <div class="tl-left"></div>
+            <div class="tl-center">
+              <div class="tl-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2s2-.9 2-2V2"/><line x1="5" y1="11" x2="5" y2="22"/><line x1="16" y1="2" x2="16" y2="22"/><path d="M19.12 3.88A3 3 0 0 1 20 6v3a3 3 0 0 1-3 3h-1v10"/></svg>
+              </div>
+            </div>
+            <div class="tl-right">
+              <div class="tl-card">
+                <div class="tl-card-header">
+                  <p class="tl-card-title">Mittagessen</p>
+                  <span class="tl-card-time">13:00</span>
+                </div>
+                <p class="tl-card-desc">Leckere Küche zum gemeinsamen Genießen und Regenerieren.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5: LINKS -->
+          <div class="tl-item">
+            <div class="tl-left">
+              <div class="tl-card">
+                <div class="tl-card-header">
+                  <p class="tl-card-title">Abenteuer</p>
+                  <span class="tl-card-time">15:00</span>
+                </div>
+                <p class="tl-card-desc">Wanderung, Bouldern, Challenges oder andere Outdoor-Aktivitäten.</p>
+              </div>
+            </div>
+            <div class="tl-center">
+              <div class="tl-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 17l5-9 4 5.5 3-3.5 6 7H3z"/></svg>
+              </div>
+            </div>
+            <div class="tl-right"></div>
+          </div>
+
+          <!-- 6: RECHTS -->
+          <div class="tl-item">
+            <div class="tl-left"></div>
+            <div class="tl-center">
+              <div class="tl-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6L12 2z"/></svg>
+              </div>
+            </div>
+            <div class="tl-right">
+              <div class="tl-card">
+                <div class="tl-card-header">
+                  <p class="tl-card-title">Freizeit</p>
+                  <span class="tl-card-time">18:00</span>
+                </div>
+                <p class="tl-card-desc">Sauna, See, Entspannung, Connecten &amp; freies Spielen.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7: LINKS -->
+          <div class="tl-item">
+            <div class="tl-left">
+              <div class="tl-card">
+                <div class="tl-card-header">
+                  <p class="tl-card-title">Abendessen</p>
+                  <span class="tl-card-time">19:30</span>
+                </div>
+                <p class="tl-card-desc">Das Herzstück des Tages — gutes Essen, ehrliche Gespräche, echte Verbindung.</p>
+              </div>
+            </div>
+            <div class="tl-center">
+              <div class="tl-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="2" x2="18" y2="22"/><path d="M22 2l-4 8-4-8"/><line x1="6" y1="2" x2="6" y2="22"/><path d="M2 6a4 4 0 0 0 8 0V2H2v4z"/></svg>
+              </div>
+            </div>
+            <div class="tl-right"></div>
+          </div>
+
+          <!-- 8: RECHTS -->
+          <div class="tl-item">
+            <div class="tl-left"></div>
+            <div class="tl-center">
+              <div class="tl-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              </div>
+            </div>
+            <div class="tl-right">
+              <div class="tl-card">
+                <div class="tl-card-header">
+                  <p class="tl-card-title">Abendrunde</p>
+                  <span class="tl-card-time">21:00</span>
+                </div>
+                <p class="tl-card-desc">Gespräche, Lagerfeuer, Sternenhimmel — der Tag endet gemeinsam.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         FAQ
+    ═══════════════════════════════════════════════ -->
+    <section id="faq" aria-labelledby="faq-h2">
+      <div class="wrap">
+        <div class="r" style="text-align:center;margin-bottom:3rem;">
+          <span class="tag r" style="margin-bottom:1rem;">Fragen &amp; Antworten</span>
+          <h2 class="r" id="faq-h2" style="font-family:var(--fd);font-weight:800;font-size:clamp(2rem,4vw,2.75rem);letter-spacing:-.03em;color:var(--s0);">FAQ</h2>
+        </div>
+        <div class="faq-inner r d1">
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              Muss ich super sportlich sein, um teilnehmen zu können?
+              <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-body" role="region">
+              <p class="faq-answer">Nein, du musst kein Leistungssportler sein — aber du solltest offen dafür sein, dich körperlich herauszufordern. Es geht bei dieser Reise nicht um Leistung oder Konkurrenz, sondern darum, Spaß an gemeinsamen sportlichen Aktivitäten zu haben und sich gegenseitig zu unterstützen.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              Woher weiß ich, dass ich die anderen Teilnehmer mögen werde?
+              <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-body" role="region">
+              <p class="faq-answer">Ob du mit jedem der 8 Teilnehmer beste Freunde werden wirst, kann ich dir natürlich nicht zu 100% versprechen. Was ich dir aber versprechen kann ist, dass bei dieser Reise durch die von mir geführten Auswahlgespräche nur Leute dabei sind, wo ich der Überzeugung bin, dass sie gut zur Gruppendynamik passen und wo ich weiß, dass sie gleiche Interessen teilen.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              Ist das eher ein Coaching oder eher ein Sport-Event?
+              <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-body" role="region">
+              <p class="faq-answer">Weder noch — und beides zugleich. Mein Ziel ist es mit dieser Reise einen Rahmen für tiefe Verbindungen und gemeinsame sportliche Aktivitäten zu schaffen. Genauso ist es mir aber auch wichtig Persönlichkeitsentwicklung mit einzubeziehen. Es wird also auch Workshops, Reflexionsphasen, Journaling und Austausch geben, mit dem Ziel mehr Klarheit für die eigenen Werte und Ziele im Leben zu schaffen.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              Wie viel kostet die Reise?
+              <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-body" role="region">
+              <p class="faq-answer">Im Preis für die Reise sind alle Übernachtungen, Aktivitäten und Verpflegung inklusive. Die Kosten hängen davon ab, ob du dich während des Early-Bird Zeitraums anmeldest. Den genauen Preis und alle weiteren Details bespreche ich gerne mit dir in einem persönlichen Gespräch. Buch dir dafür einfach hier auf der Webseite einen für dich passenden Termin.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" aria-expanded="false">
+              Können wir auch zu zweit kommen?
+              <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+            </button>
+            <div class="faq-body" role="region">
+              <p class="faq-answer">Die Reise richtet sich zwar vor allem an Alleinreisende, aber du kannst natürlich auch gerne mit einem Kumpel zusammen kommen.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         TERMINE
+    ═══════════════════════════════════════════════ -->
+    <section id="termine" style="background:var(--bg);padding:6rem 0;border-top:1.5px solid var(--s3);" aria-labelledby="termine-h2">
+      <div class="wrap">
+        <div class="r" style="text-align:center;margin-bottom:3rem;">
+          <span class="tag r" style="margin-bottom:1rem;">Retreat-Termine 2026</span>
+          <h2 class="r" id="termine-h2" style="font-family:var(--fd);font-weight:800;font-size:clamp(2rem,4vw,2.75rem);letter-spacing:-.03em;color:var(--s0);margin-bottom:.75rem;">Wähle deine Woche.</h2>
+          <p class="r" style="color:var(--s2);font-size:.9375rem;max-width:500px;margin:0 auto;">Alle Retreats finden in Tirol, Österreich statt. Max. 8 Teilnehmer pro Woche.</p>
+        </div>
+        <div class="r d1" style="display:grid;grid-template-columns:1fr;gap:1.25rem;max-width:860px;margin:0 auto;">
+
+          <!-- Woche 1 -->
+          <!-- TERMIN HIER EINFÜGEN/ANPASSEN -->
+          <div style="background:var(--w);border:1.5px solid var(--s3);border-radius:var(--r2);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;transition:border-color .2s,box-shadow .2s;" onmouseover="this.style.borderColor='var(--g)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.borderColor='var(--s3)';this.style.boxShadow='none'">
+            <div>
+              <p style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem;">Woche 1 · Frühbucher verfügbar</p>
+              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">Datum folgt — Sommer 2026</p>
+              <p style="font-size:.875rem;color:var(--s2);">6 Tage · Tirol, Österreich · Noch <strong style="color:var(--s0);">8 Plätze</strong> frei</p>
+            </div>
+            <a href="#buchung" class="btn btn-primary sp-trigger" data-page="buchung" style="white-space:nowrap;flex-shrink:0;">Jetzt buchen</a>
+          </div>
+
+          <!-- Woche 2 -->
+          <!-- TERMIN HIER EINFÜGEN/ANPASSEN -->
+          <div style="background:var(--w);border:1.5px solid var(--s3);border-radius:var(--r2);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;transition:border-color .2s,box-shadow .2s;" onmouseover="this.style.borderColor='var(--g)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.borderColor='var(--s3)';this.style.boxShadow='none'">
+            <div>
+              <p style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--s2);margin-bottom:.35rem;">Woche 2 · Demnächst</p>
+              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">Datum folgt — Sommer 2026</p>
+              <p style="font-size:.875rem;color:var(--s2);">6 Tage · Tirol, Österreich · Noch <strong style="color:var(--s0);">8 Plätze</strong> frei</p>
+            </div>
+            <a href="#buchung" class="btn btn-primary sp-trigger" data-page="buchung" style="white-space:nowrap;flex-shrink:0;">Jetzt buchen</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         CTA
+    ═══════════════════════════════════════════════ -->
+    <section id="anmeldung" aria-labelledby="cta-h2">
+      <div class="cta-orb cta-orb-1" aria-hidden="true"></div>
+      <div class="cta-orb cta-orb-2" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="cta-inner">
+          <div class="r" style="margin-bottom:1.5rem;display:flex;justify-content:center;">
+            <span class="tag" style="background:rgba(39,168,79,.15);color:#4ADE80;">Sommer 2026 · Tirol</span>
+          </div>
+          <h2 class="cta-h2 r d1" id="cta-h2">
+            Dein Platz<br>
+            <span>wartet auf dich.</span>
+          </h2>
+          <p class="cta-sub r d2">
+            <strong>Sommer 2026 · Tirol, Österreich</strong><br>
+            6 Tage · All-inclusive · Maximal 8 Teilnehmer
+          </p>
+          <div class="cta-btns r d3">
+            <a href="#buchung" class="btn btn-green sp-trigger" data-page="buchung" style="font-size:1.1rem;padding:1rem 2.5rem;">
+              Jetzt buchen
+            </a>
+          </div>
+          <p class="cta-fine r d4">
+            <strong>Nur 8 Plätze</strong> · Du wirst innerhalb 48h kontaktiert ·
+            100% Geld-zurück-Garantie
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-logo">Sport &amp; <span>Abenteuerreise</span></p>
+          <p class="footer-tagline">
+            Ein curated Alpen-Retreat für Menschen,<br>
+            die mehr wollen als Urlaub.
+          </p>
+          <div class="footer-socials" aria-label="Social Media">
+            <a href="https://www.instagram.com/jannisziegltrum/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Navigation</p>
+          <ul class="footer-links">
+            <li><a href="#retreat">Das Retreat</a></li>
+            <li><a href="#aktivitaeten">Aktivitäten</a></li>
+            <li><a href="#aftermovie">Aftermovie</a></li>
+            <li><a href="#stimmen">Stimmen</a></li>
+            <li><a href="#programm">Programm</a></li>
+            <li><a href="#anmeldung">Anmeldung</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Kontakt</p>
+          <div class="footer-contact-line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:jannisziegltrum@gmail.com">jannisziegltrum@gmail.com</a>
+          </div>
+          <div class="footer-contact-line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Hannover, Deutschland
+          </div>
+          <div class="footer-contact-line" style="margin-top:.4rem;font-size:.8125rem;color:var(--s2);padding-left:1.4rem;">
+            Retreat-Ort: Tirol, Österreich
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2026 Sport &amp; Abenteuerreise</p>
+        <div class="footer-legal">
+          <a href="#impressum" class="sp-trigger" data-page="impressum">Impressum</a>
+          <a href="#datenschutz" class="sp-trigger" data-page="datenschutz">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       IMPRESSUM PAGE
+  ═══════════════════════════════════════════════ -->
+  <div class="subpage-overlay" id="impressum-page" aria-label="Impressum" role="main">
+    <div class="sp-bar">
+      <div class="sp-bar-inner">
+        <button class="sp-back sp-close" aria-label="Zurück zur Startseite">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          Zurück
+        </button>
+        <span class="sp-logo">Sport &amp; <span>Abenteuer</span></span>
+        <a href="#buchung" class="btn btn-primary sp-trigger" data-page="buchung" style="padding:.55rem 1.25rem;font-size:.85rem;">Jetzt buchen</a>
+      </div>
+    </div>
+
+    <div class="sp-content">
+      <div class="imp-header">
+        <h1>Impressum</h1>
+        <p>Angaben gemäß § 5 DDG</p>
+      </div>
+
+      <div class="imp-grid">
+
+        <div class="imp-block">
+          <h2>Verantwortlich</h2>
+          <address>
+            Jannis Ziegltrum<br>
+            Berliner Allee 5a<br>
+            30175 Hannover
+          </address>
+        </div>
+
+        <div class="imp-block">
+          <h2>Kontakt</h2>
+          <p>
+            Telefon: <a href="tel:+4915233924820">01523 3924820</a><br>
+            E-Mail: <a href="mailto:jannisziegltrum@gmail.com">jannisziegltrum@gmail.com</a>
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Umsatzsteuer-ID</h2>
+          <p>
+            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+            <strong>DE360919631</strong>
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>EU-Streitschlichtung</h2>
+          <p>
+            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br>
+            Unsere E-Mail-Adresse finden Sie oben im Impressum.
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Verbraucherstreitbeilegung</h2>
+          <p>
+            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+            Verbraucherschlichtungsstelle teilzunehmen.
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Haftung für Inhalte</h2>
+          <p>
+            Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
+            Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+            Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten
+            nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als
+            Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
+            Informationen zu überwachen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung
+            von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.
+          </p>
+        </div>
+
+        <div class="imp-block" style="grid-column: 1 / -1;">
+          <h2>Urheberrecht</h2>
+          <p>
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen
+            dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art
+            der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen
+            Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind
+            nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf
+            dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter
+            beachtet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden,
+            bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen
+            werden wir derartige Inhalte umgehend entfernen.
+          </p>
+        </div>
+
+        <div class="imp-block" style="grid-column: 1 / -1;">
+          <h2>Datenschutz</h2>
+          <p>
+            Informationen zur Erhebung und Verarbeitung personenbezogener Daten finden Sie in unserer
+            <a href="#datenschutz" class="sp-trigger" data-page="datenschutz">Datenschutzerklärung</a>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       DATENSCHUTZ PAGE
+  ═══════════════════════════════════════════════ -->
+  <div class="subpage-overlay" id="datenschutz-page" aria-label="Datenschutzerklärung" role="main">
+    <div class="sp-bar">
+      <div class="sp-bar-inner">
+        <button class="sp-back sp-close" aria-label="Zurück zur Startseite">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          Zurück
+        </button>
+        <span class="sp-logo">Sport &amp; <span>Abenteuer</span></span>
+        <a href="#buchung" class="btn btn-primary sp-trigger" data-page="buchung" style="padding:.55rem 1.25rem;font-size:.85rem;">Jetzt buchen</a>
+      </div>
+    </div>
+
+    <div class="sp-content">
+      <div class="imp-header">
+        <h1>Datenschutzerklärung</h1>
+        <p>Stand: 9. März 2025</p>
+      </div>
+
+      <div class="imp-grid">
+
+        <div class="imp-block" style="grid-column: 1 / -1;">
+          <h2>Verantwortlicher</h2>
+          <address>
+            Jannis Ziegltrum<br>
+            Berliner Allee 5a<br>
+            30175 Hannover<br>
+            E-Mail: <a href="mailto:jannisziegltrum@gmail.com">jannisziegltrum@gmail.com</a>
+          </address>
+        </div>
+
+        <div class="imp-block" style="grid-column: 1 / -1;">
+          <h2>Grundlegendes</h2>
+          <p>
+            Diese Datenschutzerklärung soll die Nutzer dieser Website gemäß Datenschutz-Grundverordnung (DSGVO) über die Art, den Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten durch den Websitebetreiber informieren. Wir nehmen Ihren Datenschutz sehr ernst und behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Vorschriften. Bedenken Sie, dass die Datenübertragung im Internet grundsätzlich mit Sicherheitslücken verbunden sein kann. Ein vollständiger Schutz vor dem Zugriff durch Fremde ist nicht möglich.
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Zugriffsdaten / Server-Logfiles</h2>
+          <p>
+            Wir erheben Daten über Zugriffe auf die Website und speichern diese als „Server-Logfiles" ab. Folgende Daten werden protokolliert: besuchte Website, Uhrzeit des Zugriffs, Menge der gesendeten Daten in Byte, Quelle/Verweis, verwendeter Browser, verwendetes Betriebssystem, verwendete IP-Adresse (ggf. anonymisiert). Die erhobenen Daten dienen lediglich statistischen Auswertungen und zur Verbesserung der Website.
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Cookies</h2>
+          <p>
+            Unsere Website verwendet in begrenztem Umfang Cookies. Das sind kleine Textdateien, die Ihr Webbrowser auf Ihrem Endgerät speichert. Diese Cookies sind hauptsächlich für die grundlegende Funktionalität der Website notwendig. Die meisten der von uns verwendeten Cookies sind sogenannte „Session-Cookies", die nach Ende Ihrer Browser-Sitzung automatisch gelöscht werden. Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben oder generell ausschließen.
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Eingebundene YouTube-Videos</h2>
+          <p>
+            Auf unserer Website binden wir Videos der Plattform YouTube der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland ein. Wenn Sie eine Seite besuchen, auf der ein YouTube-Video eingebettet ist, wird eine Verbindung zu den Servern von YouTube hergestellt. Dabei wird YouTube mitgeteilt, welche unserer Seiten Sie besucht haben. Zudem erlangt YouTube Ihre IP-Adresse. Wenn Sie in Ihrem Google-Account eingeloggt sind, ermöglichen Sie YouTube, Ihr Surfverhalten direkt Ihrem persönlichen Profil zuzuordnen. Die Nutzung von YouTube erfolgt im Interesse einer ansprechenden Darstellung unserer Online-Angebote (Art. 6 Abs. 1 lit. f DSGVO). Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Google Fonts</h2>
+          <p>
+            Diese Website verwendet Google Fonts der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland, zur einheitlichen Darstellung von Schriftarten. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Schriftarten in Ihren Browser-Cache, um Texte und Schriftarten korrekt anzuzeigen. Zu diesem Zweck muss der von Ihnen verwendete Browser Verbindung zu den Servern von Google aufnehmen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Buchungsformular</h2>
+          <p>
+            Wenn Sie über unser Buchungsformular Daten übermitteln (Name, E-Mail, Telefon, Gesundheitsangaben etc.), werden diese ausschließlich zur Bearbeitung Ihrer Buchungsanfrage verwendet. Die Daten werden nicht an Dritte weitergegeben, außer soweit dies zur Vertragserfüllung notwendig ist. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung bzw. vorvertragliche Maßnahmen).
+          </p>
+        </div>
+
+        <div class="imp-block" style="grid-column: 1 / -1;">
+          <h2>Ihre Rechte</h2>
+          <p>
+            Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Datenverarbeitung. Im Einzelnen stehen Ihnen folgende Rechte zu:<br><br>
+            <strong>Auskunftsrecht</strong> (Art. 15 DSGVO) · <strong>Recht auf Berichtigung</strong> (Art. 16 DSGVO) · <strong>Recht auf Löschung</strong> (Art. 17 DSGVO) · <strong>Recht auf Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO) · <strong>Recht auf Datenübertragbarkeit</strong> (Art. 20 DSGVO) · <strong>Widerspruchsrecht</strong> (Art. 21 DSGVO) · <strong>Widerrufsrecht</strong> für erteilte Einwilligungen · <strong>Beschwerderecht</strong> bei einer Aufsichtsbehörde.<br><br>
+            Für Anfragen wenden Sie sich bitte an: <a href="mailto:jannisziegltrum@gmail.com">jannisziegltrum@gmail.com</a>
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Datensicherheit</h2>
+          <p>
+            Wir verwenden innerhalb des Website-Besuchs das SSL-Verfahren (Secure Socket Layer) in Verbindung mit der jeweils höchsten Verschlüsselungsstufe, die von Ihrem Browser unterstützt wird. Wir bedienen uns geeigneter technischer und organisatorischer Sicherheitsmaßnahmen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, Verlust oder unbefugten Zugriff zu schützen.
+          </p>
+        </div>
+
+        <div class="imp-block">
+          <h2>Aktualität dieser Erklärung</h2>
+          <p>
+            Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 9. März 2025. Durch die Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       BUCHUNG PAGE
+  ═══════════════════════════════════════════════ -->
+  <div class="subpage-overlay" id="buchung-page" aria-label="Buchung" role="main">
+    <div class="sp-bar">
+      <div class="sp-bar-inner">
+        <button class="sp-back sp-close" aria-label="Zurück zur Startseite">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          Zurück
+        </button>
+        <span class="sp-logo">Sport &amp; <span>Abenteuer</span></span>
+        <span style="font-family:var(--fb);font-size:.8125rem;color:var(--s2);font-weight:600;" id="bk-step-counter">Schritt 1 von 5</span>
+      </div>
+    </div>
+
+    <div class="sp-content">
+
+      <!-- Success screen -->
+      <div class="bk-success" id="bkSuccess">
+        <div class="success-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h2>Buchung eingegangen!</h2>
+        <p>
+          Vielen Dank für deine Buchung. Wir haben deine Anfrage erhalten und melden uns
+          innerhalb von 48 Stunden per E-Mail mit allen weiteren Informationen.
+        </p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <button class="btn btn-green sp-close">Zurück zur Startseite</button>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div id="bkForm">
+        <div class="bk-layout">
+
+          <!-- Left: Steps + Form -->
+          <div>
+            <!-- Step indicators -->
+            <div class="bk-steps" role="list" aria-label="Buchungsschritte">
+              <div class="bk-step-item active" data-step="1" role="listitem">
+                <div class="bk-step-dot" aria-label="Schritt 1">1</div>
+                <span class="bk-step-label">Person</span>
+                <div class="bk-step-line" aria-hidden="true"></div>
+              </div>
+              <div class="bk-step-item" data-step="2" role="listitem">
+                <div class="bk-step-dot" aria-label="Schritt 2">2</div>
+                <span class="bk-step-label">Fitness</span>
+                <div class="bk-step-line" aria-hidden="true"></div>
+              </div>
+              <div class="bk-step-item" data-step="3" role="listitem">
+                <div class="bk-step-dot" aria-label="Schritt 3">3</div>
+                <span class="bk-step-label">Gesundheit</span>
+                <div class="bk-step-line" aria-hidden="true"></div>
+              </div>
+              <div class="bk-step-item" data-step="4" role="listitem">
+                <div class="bk-step-dot" aria-label="Schritt 4">4</div>
+                <span class="bk-step-label">Motivation</span>
+                <div class="bk-step-line" aria-hidden="true"></div>
+              </div>
+              <div class="bk-step-item" data-step="5" role="listitem">
+                <div class="bk-step-dot" aria-label="Schritt 5">5</div>
+                <span class="bk-step-label">Zahlung</span>
+                <div class="bk-step-line" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Form card -->
+            <div class="bk-card">
+
+              <!-- ── Schritt 1: Person ── -->
+              <div class="bk-step-content active" id="step1">
+                <h2 class="bk-step-title">Persönliche Daten</h2>
+                <p class="bk-step-desc">Damit wir wissen, wen wir erwarten dürfen.</p>
+                <div class="form-grid form-grid-2">
+                  <div class="form-field">
+                    <label class="form-label" for="fn">Vorname <span class="req">*</span></label>
+                    <input class="form-input" type="text" id="fn" name="vorname" placeholder="Max" autocomplete="given-name" required>
+                    <span class="field-error" id="fn-err">Bitte Vorname eingeben.</span>
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label" for="ln">Nachname <span class="req">*</span></label>
+                    <input class="form-input" type="text" id="ln" name="nachname" placeholder="Mustermann" autocomplete="family-name" required>
+                    <span class="field-error" id="ln-err">Bitte Nachname eingeben.</span>
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label" for="bday">Geburtsjahr <span class="req">*</span></label>
+                    <input class="form-input" type="number" id="bday" name="geburtsjahr" placeholder="1995" min="1950" max="2007" autocomplete="bday-year" required>
+                    <span class="field-error" id="bday-err">Bitte Geburtsjahr eingeben.</span>
+                  </div>
+                  <div class="form-field">
+                    <label class="form-label" for="city">Wohnort <span class="req">*</span></label>
+                    <input class="form-input" type="text" id="city" name="wohnort" placeholder="Wien" required>
+                    <span class="field-error" id="city-err">Bitte Wohnort eingeben.</span>
+                  </div>
+                  <div class="form-field" style="grid-column:1/-1">
+                    <label class="form-label" for="email">E-Mail-Adresse <span class="req">*</span></label>
+                    <input class="form-input" type="email" id="email" name="email" placeholder="max@beispiel.at" autocomplete="email" required>
+                    <span class="field-error" id="email-err">Bitte gültige E-Mail eingeben.</span>
+                  </div>
+                  <div class="form-field" style="grid-column:1/-1">
+                    <label class="form-label" for="phone">Telefonnummer <span class="req">*</span></label>
+                    <input class="form-input" type="tel" id="phone" name="telefon" placeholder="+43 660 123 4567" autocomplete="tel" required>
+                    <span class="field-error" id="phone-err">Bitte Telefonnummer eingeben.</span>
+                  </div>
+                </div>
+                <div class="bk-nav">
+                  <span></span>
+                  <button class="btn btn-green bk-next" data-next="2">Weiter →</button>
+                </div>
+              </div>
+
+              <!-- ── Schritt 2: Fitness & Erfahrung ── -->
+              <div class="bk-step-content" id="step2">
+                <h2 class="bk-step-title">Fitness &amp; Erfahrung</h2>
+                <p class="bk-step-desc">Wir wollen sicherstellen, dass das Programm zu dir passt.</p>
+                <div class="form-grid" style="gap:1.75rem;">
+
+                  <div class="form-field">
+                    <label class="form-label">Allgemeines Fitness-Level <span class="req">*</span></label>
+                    <p style="font-size:.8125rem;color:var(--s2);margin-bottom:.625rem;">1 = Gelegentlich Sport, 5 = Täglich intensiv</p>
+                    <div class="btn-group" id="fitness-level" role="group" aria-label="Fitness-Level">
+                      <button class="btn-option" data-val="1" type="button">1 — Gelegentlich</button>
+                      <button class="btn-option" data-val="2" type="button">2 — 1–2× / Woche</button>
+                      <button class="btn-option" data-val="3" type="button">3 — 3–4× / Woche</button>
+                      <button class="btn-option" data-val="4" type="button">4 — Täglich</button>
+                      <button class="btn-option" data-val="5" type="button">5 — Leistungssport</button>
+                    </div>
+                    <input type="hidden" id="fitness-val" name="fitness_level">
+                    <span class="field-error" id="fitness-err">Bitte ein Level auswählen.</span>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label" for="wander-exp">Wander-Erfahrung <span class="req">*</span></label>
+                    <div class="form-select-wrap">
+                      <select class="form-select" id="wander-exp" name="wander_erfahrung" required>
+                        <option value="">Bitte auswählen…</option>
+                        <option value="keine">Kaum Erfahrung (gelegentliche Spaziergänge)</option>
+                        <option value="anfaenger">Anfänger (ab und zu in der Natur)</option>
+                        <option value="fortgeschritten">Fortgeschritten (regelmäßige Bergtouren)</option>
+                        <option value="erfahren">Erfahren (mehrtägige Touren / alpine Routen)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label" for="eisbad-exp">Eisbaden / Kältebäder <span class="req">*</span></label>
+                    <div class="form-select-wrap">
+                      <select class="form-select" id="eisbad-exp" name="eisbaden_erfahrung" required>
+                        <option value="">Bitte auswählen…</option>
+                        <option value="keine">Noch nie probiert</option>
+                        <option value="anfaenger">Einmal oder zweimal ausprobiert</option>
+                        <option value="regelmaessig">Mache ich regelmäßig</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label" for="trail-exp">Trail Running-Erfahrung <span class="req">*</span></label>
+                    <div class="form-select-wrap">
+                      <select class="form-select" id="trail-exp" name="trail_erfahrung" required>
+                        <option value="">Bitte auswählen…</option>
+                        <option value="keine">Keine Erfahrung (aber ich laufe gerne)</option>
+                        <option value="anfaenger">Anfänger (gelegentlich in der Natur)</option>
+                        <option value="fortgeschritten">Fortgeschritten (regelmäßige Bergläufe)</option>
+                        <option value="erfahren">Erfahren (Wettkämpfe / längere Distanzen)</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label" for="yoga-exp">Yoga / Atemarbeit <span class="req">*</span></label>
+                    <div class="form-select-wrap">
+                      <select class="form-select" id="yoga-exp" name="yoga_erfahrung" required>
+                        <option value="">Bitte auswählen…</option>
+                        <option value="keine">Keine Erfahrung</option>
+                        <option value="wenig">Wenig Erfahrung (einige Stunden)</option>
+                        <option value="regelmaessig">Regelmäßig (mind. 1× / Woche)</option>
+                        <option value="intensiv">Intensiv / eigene Praxis</option>
+                      </select>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="bk-nav">
+                  <button class="btn btn-ghost bk-prev" data-prev="1">← Zurück</button>
+                  <button class="btn btn-green bk-next" data-next="3">Weiter →</button>
+                </div>
+              </div>
+
+              <!-- ── Schritt 3: Gesundheit ── -->
+              <div class="bk-step-content" id="step3">
+                <h2 class="bk-step-title">Gesundheit &amp; Besonderheiten</h2>
+                <p class="bk-step-desc">Damit wir auf dich eingehen können. Alle Angaben sind vertraulich.</p>
+                <div class="form-grid" style="gap:1.75rem;">
+
+                  <div class="form-field">
+                    <label class="form-label">Hast du akute oder chronische Verletzungen / Einschränkungen? <span class="req">*</span></label>
+                    <div class="radio-cards" role="group" aria-label="Verletzungen">
+                      <label class="radio-card" id="verletz-nein">
+                        <input type="radio" name="verletzungen" value="nein"> <div class="radio-dot"></div> Nein
+                      </label>
+                      <label class="radio-card" id="verletz-ja">
+                        <input type="radio" name="verletzungen" value="ja"> <div class="radio-dot"></div> Ja, und zwar:
+                      </label>
+                    </div>
+                    <div class="cond-field" id="verletz-detail">
+                      <textarea class="form-textarea" name="verletzungen_detail" placeholder="Beschreibe kurz deine Einschränkungen…" style="min-height:90px;"></textarea>
+                    </div>
+                    <span class="field-error" id="verletz-err">Bitte auswählen.</span>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label">Hast du Lebensmittelunverträglichkeiten oder Allergien?</label>
+                    <div class="radio-cards" role="group" aria-label="Allergien">
+                      <label class="radio-card" id="allerg-nein">
+                        <input type="radio" name="allergien" value="nein"> <div class="radio-dot"></div> Nein
+                      </label>
+                      <label class="radio-card" id="allerg-ja">
+                        <input type="radio" name="allergien" value="ja"> <div class="radio-dot"></div> Ja, und zwar:
+                      </label>
+                    </div>
+                    <div class="cond-field" id="allerg-detail">
+                      <textarea class="form-textarea" name="allergien_detail" placeholder="z.B. Laktoseintoleranz, Vegetarier/in, …" style="min-height:80px;"></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label" for="medikamente">Nimmst du Medikamente, die wir kennen sollten?</label>
+                    <textarea class="form-textarea" id="medikamente" name="medikamente" placeholder="Optional — nur wenn für das Programm relevant." style="min-height:80px;"></textarea>
+                  </div>
+
+                </div>
+                <div class="bk-nav">
+                  <button class="btn btn-ghost bk-prev" data-prev="2">← Zurück</button>
+                  <button class="btn btn-green bk-next" data-next="4">Weiter →</button>
+                </div>
+              </div>
+
+              <!-- ── Schritt 4: Motivation ── -->
+              <div class="bk-step-content" id="step4">
+                <h2 class="bk-step-title">Deine Motivation</h2>
+                <p class="bk-step-desc">Wir wollen dich kennenlernen, bevor du ankommst.</p>
+                <div class="form-grid" style="gap:1.75rem;">
+
+                  <div class="form-field">
+                    <label class="form-label" for="motivation">Warum möchtest du an diesem Retreat teilnehmen? <span class="req">*</span></label>
+                    <textarea class="form-textarea" id="motivation" name="motivation" placeholder="Was erhoffst du dir von dieser Woche? Was treibt dich an? …" style="min-height:140px;" required></textarea>
+                    <span class="field-error" id="motiv-err">Bitte kurz beschreiben.</span>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label">Was ist dein größtes Abenteuer der letzten 12 Monate?</label>
+                    <textarea class="form-textarea" name="abenteuer" placeholder="Optional — Klettertour, Triathlon, Fernreise, … alles zählt." style="min-height:90px;"></textarea>
+                  </div>
+
+                  <div class="form-field">
+                    <label class="form-label" for="herkunft">Wie bist du auf uns aufmerksam geworden? <span class="req">*</span></label>
+                    <div class="form-select-wrap">
+                      <select class="form-select" id="herkunft" name="herkunft" required>
+                        <option value="">Bitte auswählen…</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="youtube">YouTube</option>
+                        <option value="freunde">Empfehlung von Freunden/Bekannten</option>
+                        <option value="google">Google-Suche</option>
+                        <option value="teilnehmer">Ehemaliger Teilnehmer</option>
+                        <option value="sonstiges">Sonstiges</option>
+                      </select>
+                    </div>
+                    <span class="field-error" id="herk-err">Bitte auswählen.</span>
+                  </div>
+
+                </div>
+                <div class="bk-nav">
+                  <button class="btn btn-ghost bk-prev" data-prev="3">← Zurück</button>
+                  <button class="btn btn-green bk-next" data-next="5">Weiter →</button>
+                </div>
+              </div>
+
+              <!-- ── Schritt 5: Paket & Zahlung ── -->
+              <div class="bk-step-content" id="step5">
+                <h2 class="bk-step-title">Paket &amp; Zahlung</h2>
+                <p class="bk-step-desc">Wähle dein Paket und schließe die Buchung ab.</p>
+
+                <div class="package-cards" id="pkg-cards" role="group" aria-label="Paketauswahl">
+
+                  <div class="pkg-card" data-pkg="fruehbucher" data-price="1490">
+                    <span class="pkg-badge">⚡ Frühbucher</span>
+                    <p class="pkg-name">Frühbucher-Ticket</p>
+                    <p class="pkg-price">1.490 <sub>€ p.P.</sub></p>
+                    <ul class="pkg-features">
+                      <li>✓ Alle 6 Tage inkl.</li>
+                      <li>✓ Unterkunft &amp; Verpflegung</li>
+                      <li>✓ Ausrüstungsverleih</li>
+                      <li>✓ Geführt &amp; begleitet</li>
+                      <li style="color:var(--acc);">⚡ 300 € gespart</li>
+                    </ul>
+                  </div>
+
+                  <div class="pkg-card" data-pkg="standard" data-price="1790">
+                    <p class="pkg-name" style="margin-top:1.75rem;">Standard-Ticket</p>
+                    <p class="pkg-price">1.790 <sub>€ p.P.</sub></p>
+                    <ul class="pkg-features">
+                      <li>✓ Alle 6 Tage inkl.</li>
+                      <li>✓ Unterkunft &amp; Verpflegung</li>
+                      <li>✓ Ausrüstungsverleih</li>
+                      <li>✓ Geführt &amp; begleitet</li>
+                    </ul>
+                  </div>
+
+                </div>
+                <input type="hidden" id="pkg-val" name="paket">
+                <span class="field-error" id="pkg-err">Bitte ein Paket auswählen.</span>
+
+                <!-- Payment -->
+                <div class="payment-section">
+                  <p class="payment-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    Zahlung
+                  </p>
+                  <div style="background:var(--g3);border-radius:var(--r);padding:1.25rem;margin-bottom:1rem;display:flex;align-items:flex-start;gap:.75rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--g)" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:1px;" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <div>
+                      <p style="font-size:.875rem;font-weight:700;color:var(--s0);margin-bottom:.2rem;">Sichere Zahlung via Stripe</p>
+                      <p style="font-size:.8125rem;color:var(--s1);line-height:1.6;">Du wirst nach dem Absenden auf die gesicherte Stripe-Zahlungsseite weitergeleitet. Kreditkarte, SEPA-Lastschrift und weitere Methoden werden unterstützt.</p>
+                    </div>
+                  </div>
+                  <div class="payment-methods" aria-label="Akzeptierte Zahlungsmethoden">
+                    <span class="pay-method">VISA</span>
+                    <span class="pay-method">Mastercard</span>
+                    <span class="pay-method">SEPA</span>
+                    <span class="pay-method">PayPal</span>
+                  </div>
+                </div>
+
+                <div class="bk-nav">
+                  <button class="btn btn-ghost bk-prev" data-prev="4">← Zurück</button>
+                  <button class="btn btn-primary" id="bk-submit" style="font-size:1rem;padding:.85rem 2rem;">
+                    Jetzt verbindlich buchen
+                  </button>
+                </div>
+              </div>
+
+            </div><!-- /.bk-card -->
+          </div><!-- /.left -->
+
+          <!-- Right: Order Summary -->
+          <aside class="bk-summary" aria-label="Buchungsübersicht">
+            <p class="sum-title">Deine Buchung</p>
+            <div class="sum-row"><span>Retreat</span><strong>Sport &amp; Abenteuerreise</strong></div>
+            <div class="sum-row"><span>Datum</span><strong>Sommer 2026 · Tirol</strong></div>
+            <div class="sum-row"><span>Dauer</span><strong>6 Tage / 5 Nächte</strong></div>
+            <div class="sum-row"><span>Paket</span><strong id="sum-pkg">—</strong></div>
+            <hr class="sum-divider">
+            <div class="sum-total"><span>Gesamt</span><span id="sum-price">—</span></div>
+            <button class="btn btn-green" id="sum-cta" style="width:100%;justify-content:center;font-size:.95rem;" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Weiter zu Stripe
+            </button>
+            <p class="sum-note">Du wirst zur sicheren Stripe-Zahlungsseite weitergeleitet. Dein Platz ist erst nach Zahlungseingang reserviert.</p>
+            <ul class="sum-include">
+              <li>6 Tage All-inclusive</li>
+              <li>Unterkunft &amp; Verpflegung</li>
+              <li>Ausrüstungsverleih</li>
+              <li>Geführt &amp; begleitet</li>
+              <li>Max. 8 Teilnehmer</li>
+            </ul>
+          </aside>
+
+        </div><!-- /.bk-layout -->
+      </div><!-- /#bkForm -->
+
+    </div><!-- /.sp-content -->
+  </div><!-- /#buchung-page -->
+
+  <!-- ═══════════════════════════════════════════════
+       LIGHTBOXES
+  ═══════════════════════════════════════════════ -->
+  <div class="lb" id="galleryLB" role="dialog" aria-modal="true" aria-label="Galerie" tabindex="-1">
+    <button class="lb-close" id="glbClose" aria-label="Schließen">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="lb-content" style="position:relative;">
+      <img class="lb-img" id="glbImg" src="" alt="" style="display:block;">
+      <button class="lb-arr lb-prev" id="glbPrev" aria-label="Vorheriges">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="lb-arr lb-next" id="glbNext" aria-label="Nächstes">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="lb" id="videoLB" role="dialog" aria-modal="true" aria-label="Video" tabindex="-1">
+    <button class="lb-close" id="vlbClose" aria-label="Schließen">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="lb-content">
+      <div class="video-aspect" id="vlbContainer" style="position:relative;"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       JS
+  ═══════════════════════════════════════════════ -->
+  <script>
+  'use strict';
+  const $ = (s, c=document) => c.querySelector(s);
+  const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+  const rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ── Scroll Progress Bar ── */
+  const bar = $('#progress-bar');
+  function updateBar() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (window.scrollY / max * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', updateBar, { passive: true });
+
+  /* ── Nav Scroll ── */
+  const nav = $('#nav');
+  const navAs = $$('.nav-links a');
+  let navRaf = false;
+  window.addEventListener('scroll', () => {
+    if (!navRaf) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+        navRaf = false;
+      });
+      navRaf = true;
+    }
+  }, { passive: true });
+
+  /* ── Active nav link ── */
+  const sects = $$('section[id]');
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { threshold: 0.4 }).observe !== undefined &&
+  sects.forEach(s => new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { threshold: 0.4 }).observe(s));
+
+  /* ── Mobile Menu ── */
+  const hbg = $('#hbg');
+  const mobOv = $('#mobOverlay');
+  function openMob() { hbg.classList.add('open'); mobOv.classList.add('open'); hbg.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeMob() { hbg.classList.remove('open'); mobOv.classList.remove('open'); hbg.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  hbg.addEventListener('click', () => mobOv.classList.contains('open') ? closeMob() : openMob());
+  $$('.mob-link').forEach(l => l.addEventListener('click', closeMob));
+  mobOv.querySelector('.btn')?.addEventListener('click', closeMob);
+
+  /* ── Scroll Reveal ── */
+  if (!rm) {
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    $$('.r').forEach(el => ro.observe(el));
+  } else {
+    $$('.r').forEach(el => el.classList.add('in'));
+  }
+
+  /* ── Counter Animation ── */
+  function animateCount(el, target, duration=1600) {
+    let start = null;
+    const step = ts => {
+      if (!start) start = ts;
+      const p = Math.min((ts - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const target = parseInt(e.target.dataset.target, 10);
+        if (!rm) animateCount(e.target, target);
+        else e.target.textContent = target;
+        counterObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  $$('.counter').forEach(el => counterObs.observe(el));
+
+  /* ── Timeline Animation ── */
+  const tlWrap = $('.tl-wrap');
+  if (tlWrap && !rm) {
+    const tlLine = tlWrap.querySelector('.tl-line');
+    const tlItems = tlWrap.querySelectorAll('.tl-item');
+
+    /* Linie wächst sobald der Container sichtbar wird */
+    const lineObs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { tlLine.classList.add('tl-in'); lineObs.disconnect(); }
+    }, { threshold: 0.05 });
+    lineObs.observe(tlWrap);
+
+    /* Jede Zeile erscheint beim Scrollen */
+    const itemObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('tl-in'); itemObs.unobserve(e.target); }
+      });
+    }, { threshold: 0.25 });
+    tlItems.forEach(i => itemObs.observe(i));
+  } else if (tlWrap && rm) {
+    /* Reduced motion: alles sofort sichtbar */
+    tlWrap.querySelector('.tl-line').classList.add('tl-in');
+    tlWrap.querySelectorAll('.tl-item').forEach(i => i.classList.add('tl-in'));
+  }
+
+  /* ── FAQ Accordion ── */
+  $$('.faq-header').forEach(h => {
+    function toggle() {
+      const item = h.closest('.faq-item');
+      const open = item.classList.contains('open');
+      $$('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-header').setAttribute('aria-expanded','false'); });
+      if (!open) { item.classList.add('open'); h.setAttribute('aria-expanded','true'); }
+    }
+    h.addEventListener('click', toggle);
+    h.addEventListener('keydown', e => { if (e.key==='Enter'||e.key===' ') { e.preventDefault(); toggle(); } });
+  });
+
+  /* ── Gallery Lightbox ── */
+  const glb = $('#galleryLB');
+  const glbImg = $('#glbImg');
+  let gItems = [], gIdx = 0;
+
+  function buildGItems() { gItems = $$('.g-item[data-src]'); }
+  function openGlb(idx) {
+    buildGItems();
+    if (!gItems.length) return;
+    gIdx = idx;
+    glbImg.src = gItems[gIdx].dataset.src;
+    glbImg.alt = gItems[gIdx].querySelector('img')?.alt || '';
+    glb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    glb.focus();
+  }
+  function closeGlb() { glb.classList.remove('open'); document.body.style.overflow=''; glbImg.src=''; }
+  function prevGlb() { gIdx = (gIdx-1+gItems.length)%gItems.length; glbImg.src=gItems[gIdx].dataset.src; }
+  function nextGlb() { gIdx = (gIdx+1)%gItems.length; glbImg.src=gItems[gIdx].dataset.src; }
+
+  $('#galleryGrid').addEventListener('click', e => {
+    const item = e.target.closest('.g-item[data-src]');
+    if (item) { buildGItems(); openGlb(gItems.indexOf(item)); }
+  });
+  $('#galleryGrid').addEventListener('keydown', e => {
+    if (e.key==='Enter'||e.key===' ') {
+      const item = e.target.closest('.g-item[data-src]');
+      if (item) { buildGItems(); openGlb(gItems.indexOf(item)); }
+    }
+  });
+  $('#glbClose').addEventListener('click', closeGlb);
+  $('#glbPrev').addEventListener('click', prevGlb);
+  $('#glbNext').addEventListener('click', nextGlb);
+  glb.addEventListener('click', e => { if (e.target===glb) closeGlb(); });
+
+  // Gallery swipe
+  let txStart=0;
+  glb.addEventListener('touchstart', e => txStart=e.changedTouches[0].clientX, {passive:true});
+  glb.addEventListener('touchend', e => { const d=txStart-e.changedTouches[0].clientX; if(Math.abs(d)>50) d>0?nextGlb():prevGlb(); }, {passive:true});
+
+  /* ── Video Lightbox ── */
+  const vlb = $('#videoLB');
+  const vlbCon = $('#vlbContainer');
+
+  function openVlb(videoId, portrait) {
+    if (!videoId || videoId.startsWith('YOUTUBE')) return;
+    vlbCon.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1" title="Video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:12px;"></iframe>`;
+    vlb.classList.toggle('portrait', !!portrait);
+    vlb.classList.add('open');
+    document.body.style.overflow='hidden';
+    vlb.focus();
+  }
+  function closeVlb() { vlb.classList.remove('open', 'portrait'); vlbCon.innerHTML=''; document.body.style.overflow=''; }
+
+  $$('.sv-thumb').forEach(t => {
+    const portrait = t.classList.contains('sv-thumb--portrait');
+    t.addEventListener('click', () => openVlb(t.dataset.videoId, portrait));
+    t.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') { e.preventDefault(); openVlb(t.dataset.videoId, portrait); } });
+  });
+  $('#vlbClose').addEventListener('click', closeVlb);
+  vlb.addEventListener('click', e => { if(e.target===vlb) closeVlb(); });
+
+  /* ── Auto-load YouTube thumbnails ── */
+  $$('.sv-thumb[data-video-id]').forEach(t => {
+    const id = t.dataset.videoId;
+    if (!id || id.startsWith('YOUTUBE')) return;
+    if (t.querySelector('img')) return;
+    const img = document.createElement('img');
+    img.src = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
+    img.alt = 'Video-Vorschau';
+    img.loading = 'lazy';
+    img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
+    t.style.position = 'relative';
+    t.insertBefore(img, t.firstChild);
+  });
+
+  /* ── Global ESC + Arrow Keys ── */
+  document.addEventListener('keydown', e => {
+    if (e.key==='Escape') {
+      if (mobOv.classList.contains('open')) closeMob();
+      if (glb.classList.contains('open')) closeGlb();
+      if (vlb.classList.contains('open')) closeVlb();
+    }
+    if (glb.classList.contains('open')) {
+      if (e.key==='ArrowLeft') prevGlb();
+      if (e.key==='ArrowRight') nextGlb();
+    }
+  });
+
+  /* ════════════════════════════════════════════════
+     SUBPAGE ROUTING
+  ════════════════════════════════════════════════ */
+  function openSubpage(page) {
+    document.body.classList.add('subpage-open');
+    $$('.subpage-overlay').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById(page + '-page');
+    if (target) {
+      target.classList.add('active');
+      target.scrollTop = 0;
+    }
+    history.pushState({ page }, '', '#' + page);
+    // Reset booking form when opening
+    if (page === 'buchung') resetBooking();
+  }
+
+  function closeSubpage() {
+    document.body.classList.remove('subpage-open');
+    $$('.subpage-overlay').forEach(el => el.classList.remove('active'));
+    history.pushState({}, '', '#');
+    window.scrollTo(0, 0);
+  }
+
+  // Trigger links
+  $$('.sp-trigger').forEach(el => {
+    el.addEventListener('click', e => {
+      e.preventDefault();
+      const page = el.dataset.page;
+      if (page) openSubpage(page);
+    });
+  });
+
+  // Back/close buttons
+  $$('.sp-close').forEach(btn => btn.addEventListener('click', closeSubpage));
+
+  // Browser back
+  window.addEventListener('popstate', e => {
+    if (e.state && e.state.page) openSubpage(e.state.page);
+    else closeSubpage();
+  });
+
+  // Load from hash on page load
+  if (window.location.hash === '#buchung') openSubpage('buchung');
+  if (window.location.hash === '#impressum') openSubpage('impressum');
+  if (window.location.hash === '#datenschutz') openSubpage('datenschutz');
+
+  /* ════════════════════════════════════════════════
+     MULTI-STEP BOOKING FORM
+  ════════════════════════════════════════════════ */
+  let currentStep = 1;
+  const TOTAL_STEPS = 5;
+
+  function goToStep(n) {
+    if (n < 1 || n > TOTAL_STEPS) return;
+    // Update step content
+    $$('.bk-step-content').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById('step' + n);
+    if (target) target.classList.add('active');
+    // Update step indicators
+    $$('.bk-step-item').forEach(item => {
+      const s = parseInt(item.dataset.step, 10);
+      item.classList.remove('active', 'done');
+      if (s === n) item.classList.add('active');
+      if (s < n) item.classList.add('done');
+    });
+    // Update counter
+    const counter = $('#bk-step-counter');
+    if (counter) counter.textContent = `Schritt ${n} von ${TOTAL_STEPS}`;
+    // Scroll top
+    const page = $('#buchung-page');
+    if (page) page.scrollTop = 0;
+    currentStep = n;
+  }
+
+  function resetBooking() {
+    goToStep(1);
+    $('#bkForm').style.display = '';
+    $('#bkSuccess').classList.remove('active');
+    // Reset all btn-options
+    $$('.btn-option').forEach(b => b.classList.remove('selected'));
+    $('#fitness-val').value = '';
+    // Reset radio cards
+    $$('.radio-card').forEach(rc => rc.classList.remove('checked'));
+    $$('.cond-field').forEach(cf => cf.classList.remove('visible'));
+    // Reset package
+    $$('.pkg-card').forEach(c => c.classList.remove('selected'));
+    $('#pkg-val').value = '';
+    updateSummary(null, null);
+    // Reset errors
+    $$('.field-error').forEach(e => e.classList.remove('visible'));
+    $$('.form-input, .form-select, .form-textarea').forEach(i => i.classList.remove('error'));
+  }
+
+  // Next/Prev buttons
+  $$('.bk-next').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (validateStep(currentStep)) goToStep(parseInt(btn.dataset.next, 10));
+    });
+  });
+  $$('.bk-prev').forEach(btn => {
+    btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.prev, 10)));
+  });
+
+  // Keyboard nav within form
+  $$('.bk-card').forEach(card => {
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && e.target.classList.contains('bk-next')) {
+        e.preventDefault();
+        e.target.click();
+      }
+    });
+  });
+
+  // Fitness level button group
+  $$('#fitness-level .btn-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('#fitness-level .btn-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      $('#fitness-val').value = btn.dataset.val;
+    });
+  });
+
+  // Radio cards (Ja/Nein)
+  function setupRadioCards(neinId, jaId, condId) {
+    const nein = $('#' + neinId);
+    const ja = $('#' + jaId);
+    const cond = $('#' + condId);
+    if (!nein || !ja) return;
+    nein.addEventListener('click', () => {
+      nein.classList.add('checked'); ja.classList.remove('checked');
+      nein.querySelector('input').checked = true;
+      cond.classList.remove('visible');
+    });
+    ja.addEventListener('click', () => {
+      ja.classList.add('checked'); nein.classList.remove('checked');
+      ja.querySelector('input').checked = true;
+      cond.classList.add('visible');
+    });
+  }
+  setupRadioCards('verletz-nein', 'verletz-ja', 'verletz-detail');
+  setupRadioCards('allerg-nein', 'allerg-ja', 'allerg-detail');
+
+  // Package selection
+  $$('.pkg-card').forEach(card => {
+    card.addEventListener('click', () => {
+      $$('.pkg-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      $('#pkg-val').value = card.dataset.pkg;
+      updateSummary(card.dataset.pkg, card.dataset.price);
+    });
+  });
+
+  // Summary CTA mirrors submit
+  $('#sum-cta').addEventListener('click', () => $('#bk-submit').click());
+
+  function updateSummary(pkg, price) {
+    const pkgNames = { fruehbucher: 'Frühbucher-Ticket', standard: 'Standard-Ticket' };
+    $('#sum-pkg').textContent = pkg ? pkgNames[pkg] || pkg : '—';
+    $('#sum-price').textContent = price ? parseInt(price).toLocaleString('de-AT') + ' €' : '—';
+    const cta = $('#sum-cta');
+    if (price) {
+      cta.removeAttribute('disabled');
+      cta.textContent = 'Buchung abschließen (' + parseInt(price).toLocaleString('de-AT') + ' €)';
+    } else {
+      cta.setAttribute('disabled', '');
+      cta.textContent = 'Buchung abschließen';
+    }
+  }
+
+  // Step validation
+  function validateStep(step) {
+    let valid = true;
+
+    function err(inputId, errId, show) {
+      const el = document.getElementById(inputId);
+      const errEl = document.getElementById(errId);
+      if (el) el.classList.toggle('error', show);
+      if (errEl) errEl.classList.toggle('visible', show);
+      if (show) valid = false;
+    }
+
+    if (step === 1) {
+      const fn = $('#fn'), ln = $('#ln'), bday = $('#bday'), city = $('#city'), email = $('#email'), phone = $('#phone');
+      err('fn', 'fn-err', !fn.value.trim());
+      err('ln', 'ln-err', !ln.value.trim());
+      err('bday', 'bday-err', !bday.value || bday.value < 1950 || bday.value > 2007);
+      err('city', 'city-err', !city.value.trim());
+      err('email', 'email-err', !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/));
+      err('phone', 'phone-err', !phone.value.trim());
+    }
+
+    if (step === 2) {
+      const fv = $('#fitness-val');
+      const fitnessErr = $('#fitness-err');
+      if (!fv.value) { if (fitnessErr) fitnessErr.classList.add('visible'); valid = false; }
+      else { if (fitnessErr) fitnessErr.classList.remove('visible'); }
+      // selects
+      ['kletter-exp','kajak-exp','trail-exp','yoga-exp'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.value) { el.classList.add('error'); valid = false; }
+        else if (el) el.classList.remove('error');
+      });
+    }
+
+    if (step === 3) {
+      // Verletzungen must be picked
+      const checked = $$('#step3 .radio-card.checked');
+      const vErr = $('#verletz-err');
+      if (checked.length === 0 || !$$('[name="verletzungen"]:checked').length) {
+        if (vErr) vErr.classList.add('visible'); valid = false;
+      } else {
+        if (vErr) vErr.classList.remove('visible');
+      }
+    }
+
+    if (step === 4) {
+      err('motivation', 'motiv-err', !$('#motivation').value.trim());
+      const hEl = document.getElementById('herkunft');
+      const hErr = document.getElementById('herk-err');
+      if (hEl && !hEl.value) { hEl.classList.add('error'); if (hErr) hErr.classList.add('visible'); valid = false; }
+      else if (hEl) { hEl.classList.remove('error'); if (hErr) hErr.classList.remove('visible'); }
+    }
+
+    if (step === 5) {
+      const pv = $('#pkg-val');
+      const pErr = $('#pkg-err');
+      if (!pv.value) { if (pErr) pErr.classList.add('visible'); valid = false; }
+      else { if (pErr) pErr.classList.remove('visible'); }
+    }
+
+    return valid;
+  }
+
+  // Submit → Formspree senden, dann Stripe öffnen
+  const STRIPE_URL = 'https://book.stripe.com/fZudR28Rt3sq78w3OlaAw00';
+  const FORMSPREE_URL = 'https://formspree.io/f/maqpbajp';
+
+  $('#bk-submit').addEventListener('click', async () => {
+    if (!validateStep(5)) return;
+
+    const btn = $('#bk-submit');
+    const origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet…';
+
+    // Alle Formular-Felder sammeln
+    const fields = $('#bkForm').querySelectorAll('input, select, textarea');
+    const data = {};
+    fields.forEach(f => {
+      if (!f.name) return;
+      if (f.type === 'radio' && !f.checked) return;
+      if (f.type === 'checkbox') { data[f.name] = f.checked ? 'Ja' : 'Nein'; return; }
+      data[f.name] = f.value;
+    });
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        window.open(STRIPE_URL, '_blank', 'noopener,noreferrer');
+        // Erfolgsscreen zeigen
+        $('#bkForm').style.display = 'none';
+        $('#bkSuccess').style.display = 'flex';
+      } else {
+        throw new Error('Formspree Fehler');
+      }
+    } catch (e) {
+      alert('Etwas ist schiefgelaufen. Bitte versuche es nochmal oder schreib direkt an jannisziegltrum@gmail.com');
+      btn.disabled = false;
+      btn.textContent = origText;
+    }
+  });
+  </script>
+
+</body>
+</html>
