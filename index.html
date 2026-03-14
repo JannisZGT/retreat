@@ -1551,27 +1551,28 @@
     }
     .subpage-overlay.active { display: block; }
 
-    /* Subpage top bar */
+    /* Subpage top bar — gleicher Stil wie .nav */
     .sp-bar {
       position: sticky;
-      top: 0;
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--s3);
+      top: 1rem;
       z-index: 10;
-      padding: .875rem 0;
+      padding: 0 1rem;
     }
     .sp-bar-inner {
-      max-width: var(--mw);
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: .75rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: var(--r2);
+      box-shadow: var(--sh2);
     }
-    @media(min-width:768px){ .sp-bar-inner { padding: 0 2.5rem; } }
 
     .sp-back {
       display: inline-flex;
@@ -1596,8 +1597,13 @@
       font-size: 1rem;
       color: var(--s0);
       letter-spacing: -.02em;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0;
     }
     .sp-logo span { color: var(--g); }
+    .sp-logo:hover span { opacity: .8; }
 
     .sp-content {
       max-width: var(--mw);
@@ -2414,7 +2420,7 @@
           <div class="video-wrap r">
             <div class="video-aspect" style="position:relative;">
               <iframe
-                src="https://www.youtube.com/embed/AFTERMOVIE_ID?rel=0&modestbranding=1"
+                src="https://www.youtube.com/embed/mETUP2cBQWQ?rel=0&modestbranding=1"
                 title="Sport & Abenteuerreise — Aftermovie"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -2427,10 +2433,10 @@
           <!-- Text -->
           <div class="video-text r d1">
             <div style="margin-bottom:1.25rem;"><span class="tag">Das Aftermovie</span></div>
-            <h2 id="am-h2">Das letzte Retreat — in drei Minuten.</h2>
+            <h2 id="am-h2">80 Sekunden. Echter Einblick.</h2>
             <p>
-              Schau rein und erleb, was dich erwartet. Ein echter Einblick in sechs Tage
-              Abenteuer, Gemeinschaft und Wachstum in den österreichischen Alpen.
+              Kein Hochglanz, kein Skript — nur echte Momente aus sechs Tagen Abenteuer,
+              Gemeinschaft und Wachstum in den österreichischen Alpen.
             </p>
 
           </div>
@@ -2935,7 +2941,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
           Zurück
         </button>
-        <span class="sp-logo">Sport &amp; <span>Abenteuer</span></span>
+        <button class="sp-logo sp-close" aria-label="Zurück zur Startseite">Sport &amp; <span>Abenteuer</span></button>
         <a href="#buchung" class="btn btn-primary sp-trigger" data-page="buchung" style="padding:.55rem 1.25rem;font-size:.85rem;">Jetzt buchen</a>
       </div>
     </div>
@@ -3040,7 +3046,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
           Zurück
         </button>
-        <span class="sp-logo">Sport &amp; <span>Abenteuer</span></span>
+        <button class="sp-logo sp-close" aria-label="Zurück zur Startseite">Sport &amp; <span>Abenteuer</span></button>
         <a href="#buchung" class="btn btn-primary sp-trigger" data-page="buchung" style="padding:.55rem 1.25rem;font-size:.85rem;">Jetzt buchen</a>
       </div>
     </div>
@@ -3142,7 +3148,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
           Zurück
         </button>
-        <span class="sp-logo">Sport &amp; <span>Abenteuer</span></span>
+        <button class="sp-logo sp-close" aria-label="Zurück zur Startseite">Sport &amp; <span>Abenteuer</span></button>
         <span style="font-family:var(--fb);font-size:.8125rem;color:var(--s2);font-weight:600;" id="bk-step-counter">Schritt 1 von 5</span>
       </div>
     </div>
