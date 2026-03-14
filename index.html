@@ -807,53 +807,29 @@
       padding: 6rem 0;
     }
 
-    .video-section-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
+    /* Aftermovie — Portrait-Layout */
+    .am-grid {
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      gap: 3rem;
     }
-    @media(min-width:1024px){ .video-section-grid { grid-template-columns: 1.6fr 1fr; gap: 5rem; } }
-
-    /* Auf Desktop: Text links, Video rechts — Reihenfolge im HTML bleibt Video zuerst */
     @media(min-width:1024px){
-      .video-section-grid .video-wrap { order: 2; }
-      .video-section-grid .video-text { order: 1; }
+      .am-grid { flex-direction: row; align-items: center; gap: 5rem; }
+      .am-text { flex: 1; }
     }
 
-    .video-wrap {
-      position: relative;
-      border-radius: var(--r2);
+    .am-video-wrap {
+      width: min(300px, 85vw);
+      flex-shrink: 0;
+      border-radius: 16px;
       overflow: hidden;
       box-shadow: var(--sh3);
-      background: var(--s0);
-      /* Hochformat: zentriert und max-breite begrenzt */
-      max-width: 340px;
-      margin: 0 auto;
     }
-
-    .video-aspect {
-      aspect-ratio: 16/9;
+    .am-video-wrap iframe {
+      display: block;
       width: 100%;
-    }
-
-    .video-aspect iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
-      border: none;
-    }
-
-    /* Hochformat für Shorts (9:16) */
-    .video-aspect--portrait {
-      position: relative;
-      width: 100%;
-      padding-top: 177.78%; /* 16/9 × 100 */
-    }
-    .video-aspect--portrait iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
+      aspect-ratio: 9/16;
       border: none;
     }
 
@@ -2437,23 +2413,20 @@
     ═══════════════════════════════════════════════ -->
     <section id="aftermovie" aria-labelledby="am-h2">
       <div class="wrap">
-        <div class="video-section-grid">
-          <!-- Video -->
-          <div class="video-wrap r">
-            <div class="video-aspect--portrait">
-              <iframe
-                src="https://www.youtube.com/embed/mETUP2cBQWQ?rel=0&modestbranding=1"
-                title="Sport & Abenteuerreise — Aftermovie"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                loading="lazy"
-                style="position:absolute;inset:0;width:100%;height:100%;border:none;">
-              </iframe>
-            </div>
+        <div class="am-grid">
+          <!-- Portrait Video -->
+          <div class="am-video-wrap r">
+            <iframe
+              src="https://www.youtube.com/embed/mETUP2cBQWQ?rel=0&modestbranding=1"
+              title="Sport & Abenteuerreise — Aftermovie"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
           </div>
 
           <!-- Text -->
-          <div class="video-text r d1" style="align-self:center;">
+          <div class="am-text video-text r d1">
             <div style="margin-bottom:1.25rem;"><span class="tag">Das Aftermovie</span></div>
             <h2 id="am-h2">80 Sekunden. Echter Einblick.</h2>
             <p>
