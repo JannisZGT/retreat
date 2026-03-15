@@ -3356,9 +3356,46 @@
                   </div>
                   <div class="form-field" style="grid-column:1/-1">
                     <label class="form-label" for="phone">WhatsApp-Nummer <span class="req">*</span></label>
-                    <input class="form-input" type="tel" id="phone" name="whatsapp" placeholder="+49 152 1234567" autocomplete="tel" required>
-                    <p style="font-size:.8rem;color:var(--s2);margin-top:.375rem;">Für die weitere Kommunikation</p>
-                    <span class="field-error" id="phone-err">Bitte WhatsApp-Nummer eingeben.</span>
+                    <div style="display:flex;gap:.5rem;align-items:stretch;">
+                      <div class="form-select-wrap" style="flex-shrink:0;width:auto;">
+                        <select class="form-select" id="phone-prefix" name="whatsapp_vorwahl" style="padding-right:2rem;min-width:0;">
+                          <option value="+49">🇩🇪 +49</option>
+                          <option value="+43">🇦🇹 +43</option>
+                          <option value="+41">🇨🇭 +41</option>
+                          <option value="+31">🇳🇱 +31</option>
+                          <option value="+32">🇧🇪 +32</option>
+                          <option value="+33">🇫🇷 +33</option>
+                          <option value="+39">🇮🇹 +39</option>
+                          <option value="+34">🇪🇸 +34</option>
+                          <option value="+44">🇬🇧 +44</option>
+                          <option value="+1">🇺🇸 +1</option>
+                        </select>
+                      </div>
+                      <input class="form-input" type="tel" id="phone" name="whatsapp" placeholder="152 1234567" autocomplete="tel" required style="flex:1;min-width:0;">
+                    </div>
+                    <span class="field-error" id="phone-err">Bitte gültige WhatsApp-Nummer eingeben (mind. 10 Ziffern).</span>
+                  </div>
+                  <div class="form-field" style="grid-column:1/-1">
+                    <label class="form-label" for="phone2">WhatsApp-Nummer bestätigen <span class="req">*</span></label>
+                    <div style="display:flex;gap:.5rem;align-items:stretch;">
+                      <div class="form-select-wrap" style="flex-shrink:0;width:auto;">
+                        <select class="form-select" id="phone2-prefix" style="padding-right:2rem;min-width:0;" disabled>
+                          <option value="+49">🇩🇪 +49</option>
+                          <option value="+43">🇦🇹 +43</option>
+                          <option value="+41">🇨🇭 +41</option>
+                          <option value="+31">🇳🇱 +31</option>
+                          <option value="+32">🇧🇪 +32</option>
+                          <option value="+33">🇫🇷 +33</option>
+                          <option value="+39">🇮🇹 +39</option>
+                          <option value="+34">🇪🇸 +34</option>
+                          <option value="+44">🇬🇧 +44</option>
+                          <option value="+1">🇺🇸 +1</option>
+                        </select>
+                      </div>
+                      <input class="form-input" type="tel" id="phone2" placeholder="152 1234567" autocomplete="tel" required style="flex:1;min-width:0;">
+                    </div>
+                    <p style="font-size:.8rem;color:var(--s2);margin-top:.375rem;">Bitte stelle sicher, dass diese Nummer per WhatsApp erreichbar ist.</p>
+                    <span class="field-error" id="phone2-err">Die Nummern stimmen nicht überein. Bitte überprüfe deine Eingabe.</span>
                   </div>
                 </div>
                 <div class="bk-nav">
@@ -3435,7 +3472,7 @@
             <p class="sum-title">Deine Bewerbung</p>
             <div class="sum-row"><span>Retreat</span><strong>Sport &amp; Abenteuerreise</strong></div>
             <div class="sum-row"><span>Termin</span><strong id="sum-woche">—</strong></div>
-            <div class="sum-row"><span>Dauer</span><strong>6 Tage / 5 Nächte</strong></div>
+            <div class="sum-row"><span>Dauer</span><strong>6 Tage</strong></div>
             <div class="sum-row"><span>Preis</span><strong>899 € pro Person</strong></div>
             <hr class="sum-divider">
             <div style="background:var(--g3);border-radius:var(--r);padding:1rem;margin-bottom:1rem;">
@@ -3820,6 +3857,23 @@
     });
   });
 
+  // Ländervorwahl synchronisieren: phone2-prefix spiegelt phone-prefix
+  const phonePrefix = $('#phone-prefix');
+  const phone2Prefix = $('#phone2-prefix');
+  if (phonePrefix && phone2Prefix) {
+    phonePrefix.addEventListener('change', () => {
+      phone2Prefix.value = phonePrefix.value;
+    });
+  }
+  // Nur Ziffern beim Tippen erlauben (Leerzeichen/Bindestriche erlaubt, werden bei Validierung entfernt)
+  ['phone', 'phone2'].forEach(id => {
+    const el = $('#' + id);
+    if (!el) return;
+    el.addEventListener('input', () => {
+      el.value = el.value.replace(/[^\d\s\-]/g, '');
+    });
+  });
+
   // Wochenauswahl
   $$('#woche-select .btn-option').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -3895,7 +3949,13 @@
       err('alter', 'alter-err', !alter.value || alter.value < 16 || alter.value > 80);
       err('city', 'city-err', !city.value.trim());
       err('email', 'email-err', !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/));
-      err('phone', 'phone-err', !phone.value.trim());
+      // WhatsApp: Leerzeichen/Bindestriche entfernen, mind. 10 Ziffern
+      const rawPhone = phone.value.replace(/[\s\-]/g, '');
+      err('phone', 'phone-err', !/^\d{10,}$/.test(rawPhone));
+      // Bestätigungsfeld prüfen
+      const phone2 = $('#phone2');
+      const rawPhone2 = phone2 ? phone2.value.replace(/[\s\-]/g, '') : '';
+      err('phone2', 'phone2-err', rawPhone !== rawPhone2);
     }
 
     if (step === 2) {
@@ -3944,6 +4004,11 @@
       if (f.type === 'checkbox') { data[f.name] = f.checked ? 'Ja' : 'Nein'; return; }
       data[f.name] = f.value;
     });
+    // Vollständige WhatsApp-Nummer zusammensetzen
+    const prefix = ($('#phone-prefix') ? $('#phone-prefix').value : '+49');
+    const num = ($('#phone') ? $('#phone').value.replace(/[\s\-]/g, '') : '');
+    data['whatsapp'] = prefix + num;
+    delete data['whatsapp_vorwahl'];
 
     try {
       const res = await fetch(FORMSPREE_URL, {
