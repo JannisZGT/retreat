@@ -2140,6 +2140,57 @@
       display: none;
     }
     .field-error.visible { display: block; }
+
+    /* ═══════════════════════════════════════════════
+       STICKY WHATSAPP-BUTTON
+    ═══════════════════════════════════════════════ */
+    .wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,.2);
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+    }
+    .wa-btn:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+
+    /* ═══════════════════════════════════════════════
+       ICH BIN JANNIS — PERSÖNLICHE VORSTELLUNG
+    ═══════════════════════════════════════════════ */
+    #jannis { background: var(--w); padding: 6rem 0; }
+    .jannis-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media(min-width:768px) { .jannis-grid { grid-template-columns: 320px 1fr; gap: 4rem; } }
+    .jannis-photo {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 3/4;
+      border-radius: var(--r2);
+      object-fit: cover;
+      box-shadow: var(--sh3);
+      margin: 0 auto;
+      display: block;
+      background: var(--g3);
+    }
+    .jannis-facts { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+    .jannis-fact {
+      font-family: var(--fb);
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--g);
+      background: var(--g3);
+      border-radius: var(--r3);
+      padding: .35rem .9rem;
+    }
   </style>
 </head>
 
@@ -2487,6 +2538,32 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
+         ICH BIN JANNIS
+    ═══════════════════════════════════════════════ -->
+    <section id="jannis">
+      <div class="wrap">
+        <div class="jannis-grid">
+          <!-- TODO: Foto von Jannis einfügen — Datei in assets/images/jannis.jpg ablegen -->
+          <img src="assets/images/jannis.jpg" alt="Jannis Ziegltrum" class="jannis-photo r" loading="lazy">
+          <div class="r d1">
+            <span class="tag" style="margin-bottom:1rem;display:inline-block;">Wer steckt dahinter?</span>
+            <h2 class="section-heading" style="margin-bottom:1rem;">Ich bin Jannis.</h2>
+            <p style="font-size:1.0625rem;line-height:1.8;color:var(--s1);margin-bottom:1rem;">
+              <!-- TODO: Persönlichen Text anpassen -->
+              Seit Jahren bin ich in den Bergen unterwegs — nicht als Tourist, sondern als jemand, der dort zu Hause ist. Dieses Retreat ist mein Weg, das weiterzugeben: echte Natur, echter Sport, echte Verbindung. Kein Hochglanz, kein Influencer-Programm — nur das, was wirklich zählt.
+            </p>
+            <div class="jannis-facts">
+              <!-- TODO: Persönliche Fakten anpassen -->
+              <span class="jannis-fact">Seit 5 Jahren in den Alpen</span>
+              <span class="jannis-fact">Sportbegeisterter</span>
+              <span class="jannis-fact">Max. 8 Teilnehmer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
          FEEDBACK VIDEOS
     ═══════════════════════════════════════════════ -->
     <section id="stimmen" aria-labelledby="stim-h2">
@@ -2726,6 +2803,22 @@
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         ZWISCHEN-CTA NACH PROGRAMM
+    ═══════════════════════════════════════════════ -->
+    <section style="background:var(--g3);padding:4.5rem 0;text-align:center;">
+      <div class="wrap">
+        <h2 class="section-heading r" style="margin-bottom:.75rem;">Klingt gut?</h2>
+        <p class="r d1" style="font-size:1rem;color:var(--s2);margin-bottom:2rem;">
+          <!-- TODO: Datum und Plätze aktuell halten -->
+          Noch <strong style="color:var(--g);">wenige Plätze</strong> verfügbar &nbsp;·&nbsp; Nächster Termin: Sommer 2026
+        </p>
+        <a href="#buchung" class="btn btn-primary sp-trigger r d2" data-page="buchung" style="font-size:1.0625rem;padding:.9rem 2.5rem;">
+          Jetzt Platz sichern
+        </a>
       </div>
     </section>
 
@@ -4033,6 +4126,15 @@
     }
   });
   </script>
+
+  <!-- TODO: WhatsApp-Nummer eintragen — 49 = Ländervorwahl Deutschland, dann Nummer ohne führende 0 -->
+  <!-- Beispiel: 015231234567 → wa.me/4915231234567 -->
+  <a href="https://wa.me/4915231234567" class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp schreiben">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.95-1.418A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 01-4.073-1.117l-.29-.173-3.017.864.872-2.941-.19-.302A7.946 7.946 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/>
+    </svg>
+  </a>
 
 </body>
 </html>
