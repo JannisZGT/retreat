@@ -660,8 +660,12 @@
       width: 100%;
       aspect-ratio: 4/5;
       object-fit: cover;
+      object-position: center;
       background: linear-gradient(160deg, #3A7D52 0%, #1E5C35 100%);
       display: block;
+    }
+    @media(max-width:767px) {
+      .retreat-img { aspect-ratio: unset; max-height: 520px; }
     }
     /* Floating badge */
     .floating-badge {
