@@ -843,6 +843,11 @@
       width: 100%;
       aspect-ratio: 9/16;
       border: none;
+      max-height: 660px;
+    }
+    @media(max-width:767px) {
+      .am-video-wrap { width: min(260px, 82vw); }
+      .am-video-wrap iframe { max-height: none; }
     }
 
     .video-placeholder-new {
@@ -2485,11 +2490,12 @@
           <!-- Portrait Video -->
           <div class="am-video-wrap r">
             <iframe
-              src="https://www.youtube.com/embed/mETUP2cBQWQ?rel=0&modestbranding=1"
+              src="https://iframe.mediadelivery.net/embed/617872/29944d56-7884-46da-b6cd-6bdcbf6d08f5?autoplay=true&muted=true&preload=metadata&controls=true"
               title="Sport & Abenteuerreise — Aftermovie"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
               allowfullscreen
-              loading="lazy">
+              loading="lazy"
+              playsinline>
             </iframe>
           </div>
 
