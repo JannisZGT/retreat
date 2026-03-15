@@ -2175,15 +2175,18 @@
     }
     @media(min-width:768px) { .jannis-grid { grid-template-columns: 320px 1fr; gap: 4rem; } }
     .jannis-photo {
-      width: 100%;
-      max-width: 320px;
-      aspect-ratio: 3/4;
+      display: block;
+      width: min(220px, 60vw);   /* Mobile: kompakt und zentriert */
+      height: auto;              /* natürliche Proportionen, kein Cropping */
       border-radius: var(--r2);
-      object-fit: cover;
       box-shadow: var(--sh3);
       margin: 0 auto;
-      display: block;
-      background: var(--g3);
+    }
+    @media(min-width:768px) {
+      .jannis-photo {
+        width: 100%;             /* Desktop: füllt die 320px-Spalte */
+        max-width: 320px;
+      }
     }
     .jannis-facts { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
     .jannis-fact {
@@ -2547,7 +2550,7 @@
     <section id="jannis">
       <div class="wrap">
         <div class="jannis-grid">
-          <img src="assets/images/F29BD8DC-ACD9-457E-982B-216C9AAC1AFB_1_105_c.jpeg" alt="Jannis Ziegltrum" class="jannis-photo r" loading="lazy" width="700" height="933">
+          <img src="assets/images/F29BD8DC-ACD9-457E-982B-216C9AAC1AFB_1_105_c.jpeg" alt="Jannis Ziegltrum" class="jannis-photo r" loading="lazy" width="394" height="700">
           <div class="r d1">
             <span class="tag" style="margin-bottom:1rem;">Wer steckt dahinter?</span>
             <h2 class="section-heading" style="margin-bottom:1rem;">Ich bin Jannis.</h2>
