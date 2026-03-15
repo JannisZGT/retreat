@@ -2176,16 +2176,19 @@
     @media(min-width:768px) { .jannis-grid { grid-template-columns: 320px 1fr; gap: 4rem; } }
     .jannis-photo {
       display: block;
-      width: min(220px, 60vw);   /* Mobile: kompakt und zentriert */
-      height: auto;              /* natürliche Proportionen, kein Cropping */
+      /* Mobile: volle Breite, Höhe begrenzt — kein zu hohes Portrait */
+      width: 100%;
+      max-height: 340px;
+      object-fit: cover;
+      object-position: center top;
       border-radius: var(--r2);
       box-shadow: var(--sh3);
-      margin: 0 auto;
     }
     @media(min-width:768px) {
       .jannis-photo {
-        width: 100%;             /* Desktop: füllt die 320px-Spalte */
-        max-width: 320px;
+        width: 100%;
+        max-height: none;        /* Desktop: natürliche Höhe in der 320px-Spalte */
+        height: auto;
       }
     }
     .jannis-facts { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
@@ -2488,8 +2491,7 @@
             <div style="margin-bottom:1.25rem;"><span class="tag">Das Aftermovie</span></div>
             <h2 id="am-h2">80 Sekunden. Echter Einblick.</h2>
             <p>
-              Kein Hochglanz, kein Skript — nur echte Momente aus sechs Tagen Abenteuer,
-              Gemeinschaft und Wachstum in den österreichischen Alpen.
+              Ein Blick hinter die Kulissen: echte Momente, echte Teilnehmer, echtes Erlebnis. So sieht das Sport &amp; Abenteuer Retreat wirklich aus.
             </p>
 
           </div>
@@ -2913,7 +2915,7 @@
           <div style="background:var(--w);border:1.5px solid var(--s3);border-radius:var(--r2);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;transition:border-color .2s,box-shadow .2s;" onmouseover="this.style.borderColor='var(--g)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.borderColor='var(--s3)';this.style.boxShadow='none'">
             <div>
               <p style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem;">Woche 1 · Frühbucher verfügbar</p>
-              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">Datum folgt — Sommer 2026</p>
+              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">11. – 16. Mai 2026</p>
               <p style="font-size:.875rem;color:var(--s2);">6 Tage · Tirol, Österreich · Noch <strong style="color:var(--s0);">8 Plätze</strong> frei</p>
             </div>
             <a href="#buchung" class="btn btn-primary sp-trigger" data-page="buchung" style="white-space:nowrap;flex-shrink:0;">Jetzt buchen</a>
@@ -2923,8 +2925,8 @@
           <!-- TERMIN HIER EINFÜGEN/ANPASSEN -->
           <div style="background:var(--w);border:1.5px solid var(--s3);border-radius:var(--r2);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;transition:border-color .2s,box-shadow .2s;" onmouseover="this.style.borderColor='var(--g)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.borderColor='var(--s3)';this.style.boxShadow='none'">
             <div>
-              <p style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--s2);margin-bottom:.35rem;">Woche 2 · Demnächst</p>
-              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">Datum folgt — Sommer 2026</p>
+              <p style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem;">Woche 2 · Frühbucher verfügbar</p>
+              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">18. – 23. Mai 2026</p>
               <p style="font-size:.875rem;color:var(--s2);">6 Tage · Tirol, Österreich · Noch <strong style="color:var(--s0);">8 Plätze</strong> frei</p>
             </div>
             <a href="#buchung" class="btn btn-primary sp-trigger" data-page="buchung" style="white-space:nowrap;flex-shrink:0;">Jetzt buchen</a>
@@ -3311,6 +3313,20 @@
               <div class="bk-step-content active" id="step1">
                 <h2 class="bk-step-title">Persönliche Daten</h2>
                 <p class="bk-step-desc">Damit wir wissen, wen wir erwarten dürfen.</p>
+                <div class="form-field" style="margin-bottom:1.75rem;">
+                  <label class="form-label">Wunschtermin <span class="req">*</span></label>
+                  <div class="btn-group" id="woche-select" role="group" aria-label="Woche auswählen" style="flex-direction:column;align-items:stretch;">
+                    <button class="btn-option" data-val="woche1" type="button" style="text-align:left;padding:.75rem 1rem;">
+                      <strong>Woche 1</strong> &nbsp;·&nbsp; 11. – 16. Mai 2026 &nbsp;<span style="color:var(--g);font-size:.8rem;">⚡ Frühbucher</span>
+                    </button>
+                    <button class="btn-option" data-val="woche2" type="button" style="text-align:left;padding:.75rem 1rem;">
+                      <strong>Woche 2</strong> &nbsp;·&nbsp; 18. – 23. Mai 2026 &nbsp;<span style="color:var(--g);font-size:.8rem;">⚡ Frühbucher</span>
+                    </button>
+                  </div>
+                  <input type="hidden" id="woche-val" name="wunschtermin">
+                  <span class="field-error" id="woche-err">Bitte eine Woche auswählen.</span>
+                </div>
+
                 <div class="form-grid form-grid-2">
                   <div class="form-field">
                     <label class="form-label" for="fn">Vorname <span class="req">*</span></label>
@@ -3587,7 +3603,7 @@
           <aside class="bk-summary" aria-label="Buchungsübersicht">
             <p class="sum-title">Deine Buchung</p>
             <div class="sum-row"><span>Retreat</span><strong>Sport &amp; Abenteuerreise</strong></div>
-            <div class="sum-row"><span>Datum</span><strong>Sommer 2026 · Tirol</strong></div>
+            <div class="sum-row"><span>Termin</span><strong id="sum-woche">—</strong></div>
             <div class="sum-row"><span>Dauer</span><strong>6 Tage / 5 Nächte</strong></div>
             <div class="sum-row"><span>Paket</span><strong id="sum-pkg">—</strong></div>
             <hr class="sum-divider">
@@ -3973,6 +3989,17 @@
   });
 
   // Fitness level button group
+  // Wochenauswahl
+  $$('#woche-select .btn-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('#woche-select .btn-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      $('#woche-val').value = btn.dataset.val;
+      $('#woche-err').classList.remove('visible');
+      updateSummary(null, null); /* Zusammenfassung sofort aktualisieren */
+    });
+  });
+
   $$('#fitness-level .btn-option').forEach(btn => {
     btn.addEventListener('click', () => {
       $$('#fitness-level .btn-option').forEach(b => b.classList.remove('selected'));
@@ -4016,6 +4043,10 @@
 
   function updateSummary(pkg, price) {
     const pkgNames = { fruehbucher: 'Frühbucher-Ticket', standard: 'Standard-Ticket' };
+    const wocheNames = { woche1: 'Woche 1 · 11.–16. Mai 2026', woche2: 'Woche 2 · 18.–23. Mai 2026' };
+    const woche = $('#woche-val') ? $('#woche-val').value : '';
+    const sumWoche = $('#sum-woche');
+    if (sumWoche) sumWoche.textContent = woche ? wocheNames[woche] || woche : '—';
     $('#sum-pkg').textContent = pkg ? pkgNames[pkg] || pkg : '—';
     $('#sum-price').textContent = price ? parseInt(price).toLocaleString('de-AT') + ' €' : '—';
     const cta = $('#sum-cta');
@@ -4042,6 +4073,9 @@
 
     if (step === 1) {
       const fn = $('#fn'), ln = $('#ln'), bday = $('#bday'), city = $('#city'), email = $('#email'), phone = $('#phone');
+      const wocheVal = $('#woche-val');
+      const wocheErr = $('#woche-err');
+      if (!wocheVal || !wocheVal.value) { if (wocheErr) wocheErr.classList.add('visible'); valid = false; }
       err('fn', 'fn-err', !fn.value.trim());
       err('ln', 'ln-err', !ln.value.trim());
       err('bday', 'bday-err', !bday.value || bday.value < 1950 || bday.value > 2007);
