@@ -13,7 +13,7 @@
   <link rel="dns-prefetch" href="https://connect.facebook.net">
   <link rel="dns-prefetch" href="https://iframe.mediadelivery.net">
   <!-- Preload Hero-Bild (LCP) -->
-  <link rel="preload" as="image" href="assets/images/hero.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/hero.webp" imagesrcset="assets/images/hero-400.webp 400w, assets/images/hero-800.webp 800w, assets/images/hero.webp 1920w" imagesizes="100vw" fetchpriority="high">
   <!-- Fonts: async laden — blockiert kein Rendering mehr -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"></noscript>
@@ -763,10 +763,10 @@
     .bento-card:hover .bento-bg { transform: scale(1.06); }
 
     /* Aktivitäten-Fotos */
-    .bento-1 .bento-bg { background: #2D5A3D url('assets/images/activity-wandern.jpg') center/cover no-repeat; }
-    .bento-2 .bento-bg { background: #1A3550 url('assets/images/activity-eisbaden.jpg') center/cover no-repeat; }
-    .bento-3 .bento-bg { background: #4A2810 url('assets/images/activity-sport.jpg') center/cover no-repeat; }
-    .bento-4 .bento-bg { background: #2A3E1A url('assets/images/activity-workshops.jpg') center/cover no-repeat; }
+    .bento-1 .bento-bg { background: #2D5A3D url('assets/images/activity-wandern.webp') center/cover no-repeat; }
+    .bento-2 .bento-bg { background: #1A3550 url('assets/images/activity-eisbaden.webp') center/cover no-repeat; }
+    .bento-3 .bento-bg { background: #4A2810 url('assets/images/activity-sport.webp') center/cover no-repeat; }
+    .bento-4 .bento-bg { background: #2A3E1A url('assets/images/activity-workshops.webp') center/cover no-repeat; }
 
     .bento-overlay {
       position: absolute;
@@ -842,6 +842,30 @@
       overflow: hidden;
       box-shadow: var(--sh3);
     }
+    /* Bunny Facade Play-Button */
+    .bunny-play-btn {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      background: none; border: none; cursor: pointer; padding: 0;
+      border-radius: inherit;
+    }
+    .bunny-play-btn img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; border-radius: inherit;
+    }
+    .bunny-play-icon {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(0,0,0,.55);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, transform .2s;
+      pointer-events: none;
+    }
+    .bunny-play-btn:hover .bunny-play-icon {
+      background: var(--acc);
+      transform: translate(-50%,-50%) scale(1.08);
+    }
+    .bunny-play-icon svg { margin-left: 4px; }
+
     .am-video-wrap iframe {
       display: block;
       width: 100%;
@@ -2312,7 +2336,14 @@
       </div>
 
       <div class="hero-photo-wrap" aria-hidden="true">
-        <img src="assets/images/hero.jpg" alt="Luftaufnahme der österreichischen Alpen — grüne Täler und kristallklare Seen" class="hero-photo" loading="eager" fetchpriority="high" width="1920" height="1279">
+        <img src="assets/images/hero.webp"
+             srcset="assets/images/hero-400.webp 400w, assets/images/hero-800.webp 800w, assets/images/hero.webp 1920w"
+             sizes="100vw"
+             alt="Luftaufnahme der österreichischen Alpen — grüne Täler und kristallklare Seen"
+             class="hero-photo"
+             loading="eager"
+             fetchpriority="high"
+             width="1920" height="1279">
       </div>
 
       <div class="wrap">
@@ -2435,7 +2466,7 @@
 
           <div class="r d2">
             <div class="retreat-img-card">
-              <img src="assets/images/dji_fly_20250913_143428_0171_1758134322249_timed.jpg" alt="Gruppe am Gipfelkreuz beim Sport &amp; Abenteuerreise Retreat" class="retreat-img" loading="lazy" width="1400" height="935">
+              <img src="assets/images/dji_fly_20250913_143428_0171_1758134322249_timed.webp" alt="Gruppe am Gipfelkreuz beim Sport &amp; Abenteuerreise Retreat" class="retreat-img" loading="lazy" width="1400" height="935">
               <div class="floating-badge" aria-hidden="true">
                 <div class="badge-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -2469,7 +2500,7 @@
 
         <div class="bento">
           <!-- Wandern (groß) -->
-          <!-- FOTO EINFÜGEN: assets/images/activity-wandern.jpg -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-wandern.webp -->
           <article class="bento-card bento-lg bento-1 r" aria-label="Wandern">
             <div class="bento-bg" role="img" aria-label="Wandern in den Alpen"></div>
             <div class="bento-overlay" aria-hidden="true"></div>
@@ -2481,7 +2512,7 @@
           </article>
 
           <!-- Eisbaden -->
-          <!-- FOTO EINFÜGEN: assets/images/activity-eisbaden.jpg -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-eisbaden.webp -->
           <article class="bento-card bento-2 r d1" aria-label="Eisbaden">
             <div class="bento-bg" role="img" aria-label="Eisbaden in kristallklarem Wasser"></div>
             <div class="bento-overlay" aria-hidden="true"></div>
@@ -2493,7 +2524,7 @@
           </article>
 
           <!-- Sport & Spiele -->
-          <!-- FOTO EINFÜGEN: assets/images/activity-sport.jpg -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-sport.webp -->
           <article class="bento-card bento-3 r d2" aria-label="Sport & Spiele">
             <div class="bento-bg" role="img" aria-label="Sport und Spiele"></div>
             <div class="bento-overlay" aria-hidden="true"></div>
@@ -2505,7 +2536,7 @@
           </article>
 
           <!-- Workshops -->
-          <!-- FOTO EINFÜGEN: assets/images/activity-workshops.jpg -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-workshops.webp -->
           <article class="bento-card bento-4 r d3" aria-label="Workshops & Reflexion">
             <div class="bento-bg" role="img" aria-label="Workshops und Reflexion"></div>
             <div class="bento-overlay" aria-hidden="true"></div>
@@ -2525,16 +2556,26 @@
     <section id="aftermovie" aria-labelledby="am-h2">
       <div class="wrap">
         <div class="am-grid">
-          <!-- Portrait Video -->
-          <div class="am-video-wrap r">
-            <iframe
-              src="https://iframe.mediadelivery.net/embed/617872/29944d56-7884-46da-b6cd-6bdcbf6d08f5?autoplay=true&muted=true&controls=true"
-              title="Sport & Abenteuerreise — Aftermovie"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              allowfullscreen
-              loading="lazy"
-              playsinline>
-            </iframe>
+          <!-- Portrait Video — Facade: iframe erst beim Klick laden (spart ~400KB JS) -->
+          <div class="am-video-wrap r" id="bunny-facade">
+            <button class="bunny-play-btn" aria-label="Aftermovie abspielen" onclick="
+              var w=this.parentNode;
+              var f=document.createElement('iframe');
+              f.src='https://iframe.mediadelivery.net/embed/617872/29944d56-7884-46da-b6cd-6bdcbf6d08f5?autoplay=1&muted=1&controls=1';
+              f.title='Sport & Abenteuerreise — Aftermovie';
+              f.allow='accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;fullscreen';
+              f.allowFullscreen=true;
+              f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:inherit;';
+              w.innerHTML='';w.appendChild(f);
+            ">
+              <img src="assets/images/aftermovie-thumb.webp"
+                   alt="Aftermovie Vorschau — Sport & Abenteuerreise"
+                   loading="lazy"
+                   width="450" height="800">
+              <span class="bunny-play-icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+            </button>
           </div>
 
           <!-- Text -->
@@ -2564,36 +2605,36 @@
         </h2>
 
         <div class="gallery-grid" id="galleryGrid">
-          <div class="g-item r" data-src="assets/images/gallery-01.jpg" tabindex="0" role="button" aria-label="Unterkunft — Chalet Außenansicht">
-            <img src="assets/images/gallery-01.jpg" alt="Chalet Außenansicht mit Bergpanorama" loading="lazy" width="600" height="800">
+          <div class="g-item r" data-src="assets/images/gallery-01.webp" tabindex="0" role="button" aria-label="Unterkunft — Chalet Außenansicht">
+            <img src="assets/images/gallery-01.webp" alt="Chalet Außenansicht mit Bergpanorama" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d1" data-src="assets/images/gallery-02.jpg" tabindex="0" role="button" aria-label="Unterkunft — Zimmer &amp; Bad">
-            <img src="assets/images/gallery-02.jpg" alt="Helles Schlafzimmer und Badezimmer der Retreat-Unterkunft" loading="lazy" width="600" height="800">
+          <div class="g-item r d1" data-src="assets/images/gallery-02.webp" tabindex="0" role="button" aria-label="Unterkunft — Zimmer &amp; Bad">
+            <img src="assets/images/gallery-02.webp" alt="Helles Schlafzimmer und Badezimmer der Retreat-Unterkunft" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d2" data-src="assets/images/gallery-03.jpg" tabindex="0" role="button" aria-label="Unterkunft — Sauna">
-            <img src="assets/images/gallery-03.jpg" alt="Sauna zur Regeneration nach dem Sport" loading="lazy" width="600" height="800">
+          <div class="g-item r d2" data-src="assets/images/gallery-03.webp" tabindex="0" role="button" aria-label="Unterkunft — Sauna">
+            <img src="assets/images/gallery-03.webp" alt="Sauna zur Regeneration nach dem Sport" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d3" data-src="assets/images/gallery-04.jpg" tabindex="0" role="button" aria-label="Gemeinsames Abendessen">
-            <img src="assets/images/gallery-04.jpg" alt="Teilnehmer beim gemeinsamen Abendessen am langen Tisch" loading="lazy" width="600" height="800">
+          <div class="g-item r d3" data-src="assets/images/gallery-04.webp" tabindex="0" role="button" aria-label="Gemeinsames Abendessen">
+            <img src="assets/images/gallery-04.webp" alt="Teilnehmer beim gemeinsamen Abendessen am langen Tisch" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r" data-src="assets/images/gallery-05.jpg" tabindex="0" role="button" aria-label="Mountainbike-Tour">
-            <img src="assets/images/gallery-05.jpg" alt="Gruppe bei der Mountainbike-Tour durch die Alpen" loading="lazy" width="600" height="800">
+          <div class="g-item r" data-src="assets/images/gallery-05.webp" tabindex="0" role="button" aria-label="Mountainbike-Tour">
+            <img src="assets/images/gallery-05.webp" alt="Gruppe bei der Mountainbike-Tour durch die Alpen" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
           <div class="g-item r d1" data-src="assets/images/area-2.webp" tabindex="0" role="button" aria-label="Beachvolleyball mit Bergpanorama">
             <img src="assets/images/area-2.webp" alt="Beachvolleyball mit Bergpanorama" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d2" data-src="assets/images/gallery-07.jpg" tabindex="0" role="button" aria-label="Gipfelerlebnis">
-            <img src="assets/images/gallery-07.jpg" alt="Person auf dem Berggipfel mit erhobenen Armen" loading="lazy" width="600" height="800">
+          <div class="g-item r d2" data-src="assets/images/gallery-07.webp" tabindex="0" role="button" aria-label="Gipfelerlebnis">
+            <img src="assets/images/gallery-07.webp" alt="Person auf dem Berggipfel mit erhobenen Armen" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d3" data-src="assets/images/gallery-08.jpg" tabindex="0" role="button" aria-label="Naturlandschaft">
-            <img src="assets/images/gallery-08.jpg" alt="Luftaufnahme der Seenlandschaft in den Alpen" loading="lazy" width="600" height="800">
+          <div class="g-item r d3" data-src="assets/images/gallery-08.webp" tabindex="0" role="button" aria-label="Naturlandschaft">
+            <img src="assets/images/gallery-08.webp" alt="Luftaufnahme der Seenlandschaft in den Alpen" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
         </div>
@@ -2606,7 +2647,7 @@
     <section id="jannis">
       <div class="wrap">
         <div class="jannis-grid">
-          <img src="assets/images/F29BD8DC-ACD9-457E-982B-216C9AAC1AFB_1_105_c.jpeg" alt="Jannis Ziegltrum" class="jannis-photo r" loading="lazy" width="394" height="700">
+          <img src="assets/images/F29BD8DC-ACD9-457E-982B-216C9AAC1AFB_1_105_c.webp" alt="Jannis Ziegltrum" class="jannis-photo r" loading="lazy" width="394" height="700">
           <div class="r d1">
             <span class="tag" style="margin-bottom:1rem;">Wer steckt dahinter?</span>
             <h2 class="section-heading" style="margin-bottom:1rem;">Ich bin Jannis.</h2>
