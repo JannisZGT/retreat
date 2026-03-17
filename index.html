@@ -1022,15 +1022,15 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         gap: 1rem;
-        padding: 1rem 10vw 2.5rem;
+        padding: 1rem 12vw 1.5rem;
         scrollbar-width: none;
         -ms-overflow-style: none;
         align-items: flex-start;
       }
       .stimmen-grid::-webkit-scrollbar { display: none; }
       .stimmen-card {
-        min-width: 80vw;
-        width: 80vw;
+        min-width: 76vw;
+        width: 76vw;
         flex-shrink: 0;
         scroll-snap-align: center;
         box-sizing: border-box;
@@ -1047,6 +1047,25 @@
         aspect-ratio: 9/16;
         height: unset;
       }
+    }
+
+    /* Dot-Indikatoren (nur Mobile) */
+    .stimmen-dots {
+      display: none;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: 1.25rem;
+    }
+    @media(max-width:639px) { .stimmen-dots { display: flex; } }
+    .stimmen-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--s3);
+      transition: background .25s, transform .25s;
+    }
+    .stimmen-dot.active {
+      background: var(--g);
+      transform: scale(1.3);
     }
 
     .stimmen-card {
@@ -2690,6 +2709,14 @@
           </div>
 
         </div>
+
+        <!-- Karussell-Dots (nur Mobile) -->
+        <div class="stimmen-dots" aria-hidden="true">
+          <span class="stimmen-dot active"></span>
+          <span class="stimmen-dot"></span>
+          <span class="stimmen-dot"></span>
+        </div>
+
       </div>
     </section>
 
@@ -3739,6 +3766,17 @@
   });
   $('#vlbClose').addEventListener('click', closeVlb);
   vlb.addEventListener('click', e => { if(e.target===vlb) closeVlb(); });
+
+  /* ── Stimmen-Karussell Dots ── */
+  const stimGrid = document.querySelector('.stimmen-grid');
+  const stimDots = document.querySelectorAll('.stimmen-dot');
+  if (stimGrid && stimDots.length) {
+    stimGrid.addEventListener('scroll', () => {
+      const cardW = stimGrid.offsetWidth * 0.76 + 16; // 76vw + gap
+      const idx = Math.min(Math.round(stimGrid.scrollLeft / cardW), stimDots.length - 1);
+      stimDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+  }
 
   /* ── Auto-load YouTube thumbnails ── */
   $$('.sv-thumb[data-video-id]').forEach(t => {
