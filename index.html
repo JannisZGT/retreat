@@ -2125,10 +2125,16 @@
     /* Success screen */
     .bk-success {
       display: none;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      padding: 3rem 0;
+      padding: 3rem 1.25rem;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .bk-success.active { display: block; }
+    .bk-success.visible {
+      display: flex;
+    }
     .success-icon {
       width: 80px; height: 80px;
       background: var(--g3);
@@ -2138,16 +2144,24 @@
       justify-content: center;
       margin: 0 auto 1.5rem;
       color: var(--g);
+      flex-shrink: 0;
     }
     .bk-success h2 {
       font-family: var(--fd);
       font-weight: 800;
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 5vw, 2rem);
       letter-spacing: -.03em;
       color: var(--s0);
       margin-bottom: .75rem;
     }
-    .bk-success p { font-size: 1.0625rem; color: var(--s1); line-height: 1.7; max-width: 460px; margin: 0 auto 2rem; }
+    .bk-success p {
+      font-size: 1.0625rem;
+      color: var(--s1);
+      line-height: 1.7;
+      max-width: 460px;
+      width: 100%;
+      margin: 0 auto 2rem;
+    }
 
     /* Error message */
     .field-error {
@@ -3852,7 +3866,7 @@
   function resetBooking() {
     goToStep(1);
     $('#bkForm').style.display = '';
-    $('#bkSuccess').classList.remove('active');
+    $('#bkSuccess').classList.remove('visible');
     // Reset all btn-options
     $$('.btn-option').forEach(b => b.classList.remove('selected'));
     if ($('#fitness-val')) $('#fitness-val').value = '';
@@ -4055,7 +4069,7 @@
           fbq('track', 'Lead', { content_name: 'Retreat Bewerbung', currency: 'EUR', value: 899 });
         }
         $('#bkForm').style.display = 'none';
-        $('#bkSuccess').style.display = 'flex';
+        $('#bkSuccess').classList.add('visible');
       } else {
         throw new Error('Formspree Fehler');
       }
