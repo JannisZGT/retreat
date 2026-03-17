@@ -13,7 +13,7 @@
   <link rel="dns-prefetch" href="https://connect.facebook.net">
   <link rel="dns-prefetch" href="https://iframe.mediadelivery.net">
   <!-- Preload Hero-Bild (LCP) -->
-  <link rel="preload" as="image" href="assets/images/hero.webp" imagesrcset="assets/images/hero-400.webp 400w, assets/images/hero-800.webp 800w, assets/images/hero.webp 1920w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/hero.webp?v=2" imagesrcset="assets/images/hero-400.webp?v=2 400w, assets/images/hero-800.webp?v=2 800w, assets/images/hero.webp?v=2 1920w" imagesizes="100vw" fetchpriority="high">
   <!-- Fonts: async laden — blockiert kein Rendering mehr -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"></noscript>
@@ -763,10 +763,10 @@
     .bento-card:hover .bento-bg { transform: scale(1.06); }
 
     /* Aktivitäten-Fotos */
-    .bento-1 .bento-bg { background: #2D5A3D url('assets/images/activity-wandern.webp') center/cover no-repeat; }
-    .bento-2 .bento-bg { background: #1A3550 url('assets/images/activity-eisbaden.webp') center/cover no-repeat; }
-    .bento-3 .bento-bg { background: #4A2810 url('assets/images/activity-sport.webp') center/cover no-repeat; }
-    .bento-4 .bento-bg { background: #2A3E1A url('assets/images/activity-workshops.webp') center/cover no-repeat; }
+    .bento-1 .bento-bg { background: #2D5A3D url('assets/images/activity-wandern.webp?v=2') center/cover no-repeat; }
+    .bento-2 .bento-bg { background: #1A3550 url('assets/images/activity-eisbaden.webp?v=2') center/cover no-repeat; }
+    .bento-3 .bento-bg { background: #4A2810 url('assets/images/activity-sport.webp?v=2') center/cover no-repeat; }
+    .bento-4 .bento-bg { background: #2A3E1A url('assets/images/activity-workshops.webp?v=2') center/cover no-repeat; }
 
     .bento-overlay {
       position: absolute;
@@ -2338,8 +2338,8 @@
       </div>
 
       <div class="hero-photo-wrap" aria-hidden="true">
-        <img src="assets/images/hero.webp"
-             srcset="assets/images/hero-400.webp 400w, assets/images/hero-800.webp 800w, assets/images/hero.webp 1920w"
+        <img src="assets/images/hero.webp?v=2"
+             srcset="assets/images/hero-400.webp?v=2 400w, assets/images/hero-800.webp?v=2 800w, assets/images/hero.webp?v=2 1920w"
              sizes="100vw"
              alt="Luftaufnahme der österreichischen Alpen — grüne Täler und kristallklare Seen"
              class="hero-photo"
@@ -2468,7 +2468,7 @@
 
           <div class="r d2">
             <div class="retreat-img-card">
-              <img src="assets/images/dji_fly_20250913_143428_0171_1758134322249_timed.webp" alt="Gruppe am Gipfelkreuz beim Sport &amp; Abenteuerreise Retreat" class="retreat-img" loading="lazy" width="1400" height="935">
+              <img src="assets/images/dji_fly_20250913_143428_0171_1758134322249_timed.webp?v=2" alt="Gruppe am Gipfelkreuz beim Sport &amp; Abenteuerreise Retreat" class="retreat-img" loading="lazy" width="1400" height="935">
               <div class="floating-badge" aria-hidden="true">
                 <div class="badge-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -2502,7 +2502,7 @@
 
         <div class="bento">
           <!-- Wandern (groß) -->
-          <!-- FOTO EINFÜGEN: assets/images/activity-wandern.webp -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-wandern.webp?v=2 -->
           <article class="bento-card bento-lg bento-1 r" aria-label="Wandern">
             <div class="bento-bg" role="img" aria-label="Wandern in den Alpen"></div>
             <div class="bento-overlay" aria-hidden="true"></div>
@@ -2514,7 +2514,7 @@
           </article>
 
           <!-- Eisbaden -->
-          <!-- FOTO EINFÜGEN: assets/images/activity-eisbaden.webp -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-eisbaden.webp?v=2 -->
           <article class="bento-card bento-2 r d1" aria-label="Eisbaden">
             <div class="bento-bg" role="img" aria-label="Eisbaden in kristallklarem Wasser"></div>
             <div class="bento-overlay" aria-hidden="true"></div>
@@ -2526,7 +2526,7 @@
           </article>
 
           <!-- Sport & Spiele -->
-          <!-- FOTO EINFÜGEN: assets/images/activity-sport.webp -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-sport.webp?v=2 -->
           <article class="bento-card bento-3 r d2" aria-label="Sport & Spiele">
             <div class="bento-bg" role="img" aria-label="Sport und Spiele"></div>
             <div class="bento-overlay" aria-hidden="true"></div>
@@ -2538,7 +2538,7 @@
           </article>
 
           <!-- Workshops -->
-          <!-- FOTO EINFÜGEN: assets/images/activity-workshops.webp -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-workshops.webp?v=2 -->
           <article class="bento-card bento-4 r d3" aria-label="Workshops & Reflexion">
             <div class="bento-bg" role="img" aria-label="Workshops und Reflexion"></div>
             <div class="bento-overlay" aria-hidden="true"></div>
@@ -2570,7 +2570,7 @@
               f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:none;border-radius:inherit;';
               w.innerHTML='';w.appendChild(f);
             ">
-              <img src="assets/images/aftermovie-thumb.webp"
+              <img src="assets/images/aftermovie-thumb.webp?v=2"
                    alt="Aftermovie Vorschau — Sport & Abenteuerreise"
                    loading="lazy"
                    width="450" height="800">
@@ -2607,36 +2607,36 @@
         </h2>
 
         <div class="gallery-grid" id="galleryGrid">
-          <div class="g-item r" data-src="assets/images/gallery-01.webp" tabindex="0" role="button" aria-label="Unterkunft — Chalet Außenansicht">
-            <img src="assets/images/gallery-01.webp" alt="Chalet Außenansicht mit Bergpanorama" loading="lazy" width="600" height="800">
+          <div class="g-item r" data-src="assets/images/gallery-01.webp?v=2" tabindex="0" role="button" aria-label="Unterkunft — Chalet Außenansicht">
+            <img src="assets/images/gallery-01.webp?v=2" alt="Chalet Außenansicht mit Bergpanorama" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d1" data-src="assets/images/gallery-02.webp" tabindex="0" role="button" aria-label="Unterkunft — Zimmer &amp; Bad">
-            <img src="assets/images/gallery-02.webp" alt="Helles Schlafzimmer und Badezimmer der Retreat-Unterkunft" loading="lazy" width="600" height="800">
+          <div class="g-item r d1" data-src="assets/images/gallery-02.webp?v=2" tabindex="0" role="button" aria-label="Unterkunft — Zimmer &amp; Bad">
+            <img src="assets/images/gallery-02.webp?v=2" alt="Helles Schlafzimmer und Badezimmer der Retreat-Unterkunft" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d2" data-src="assets/images/gallery-03.webp" tabindex="0" role="button" aria-label="Unterkunft — Sauna">
-            <img src="assets/images/gallery-03.webp" alt="Sauna zur Regeneration nach dem Sport" loading="lazy" width="600" height="800">
+          <div class="g-item r d2" data-src="assets/images/gallery-03.webp?v=2" tabindex="0" role="button" aria-label="Unterkunft — Sauna">
+            <img src="assets/images/gallery-03.webp?v=2" alt="Sauna zur Regeneration nach dem Sport" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d3" data-src="assets/images/gallery-04.webp" tabindex="0" role="button" aria-label="Gemeinsames Abendessen">
-            <img src="assets/images/gallery-04.webp" alt="Teilnehmer beim gemeinsamen Abendessen am langen Tisch" loading="lazy" width="600" height="800">
+          <div class="g-item r d3" data-src="assets/images/gallery-04.webp?v=2" tabindex="0" role="button" aria-label="Gemeinsames Abendessen">
+            <img src="assets/images/gallery-04.webp?v=2" alt="Teilnehmer beim gemeinsamen Abendessen am langen Tisch" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r" data-src="assets/images/gallery-05.webp" tabindex="0" role="button" aria-label="Mountainbike-Tour">
-            <img src="assets/images/gallery-05.webp" alt="Gruppe bei der Mountainbike-Tour durch die Alpen" loading="lazy" width="600" height="800">
+          <div class="g-item r" data-src="assets/images/gallery-05.webp?v=2" tabindex="0" role="button" aria-label="Mountainbike-Tour">
+            <img src="assets/images/gallery-05.webp?v=2" alt="Gruppe bei der Mountainbike-Tour durch die Alpen" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d1" data-src="assets/images/area-2.webp" tabindex="0" role="button" aria-label="Beachvolleyball mit Bergpanorama">
-            <img src="assets/images/area-2.webp" alt="Beachvolleyball mit Bergpanorama" loading="lazy" width="600" height="800">
+          <div class="g-item r d1" data-src="assets/images/area-2.webp?v=2" tabindex="0" role="button" aria-label="Beachvolleyball mit Bergpanorama">
+            <img src="assets/images/area-2.webp?v=2" alt="Beachvolleyball mit Bergpanorama" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d2" data-src="assets/images/gallery-07.webp" tabindex="0" role="button" aria-label="Gipfelerlebnis">
-            <img src="assets/images/gallery-07.webp" alt="Person auf dem Berggipfel mit erhobenen Armen" loading="lazy" width="600" height="800">
+          <div class="g-item r d2" data-src="assets/images/gallery-07.webp?v=2" tabindex="0" role="button" aria-label="Gipfelerlebnis">
+            <img src="assets/images/gallery-07.webp?v=2" alt="Person auf dem Berggipfel mit erhobenen Armen" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
-          <div class="g-item r d3" data-src="assets/images/gallery-08.webp" tabindex="0" role="button" aria-label="Naturlandschaft">
-            <img src="assets/images/gallery-08.webp" alt="Luftaufnahme der Seenlandschaft in den Alpen" loading="lazy" width="600" height="800">
+          <div class="g-item r d3" data-src="assets/images/gallery-08.webp?v=2" tabindex="0" role="button" aria-label="Naturlandschaft">
+            <img src="assets/images/gallery-08.webp?v=2" alt="Luftaufnahme der Seenlandschaft in den Alpen" loading="lazy" width="600" height="800">
             <div class="g-item-ov" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
           </div>
         </div>
@@ -2649,7 +2649,7 @@
     <section id="jannis">
       <div class="wrap">
         <div class="jannis-grid">
-          <img src="assets/images/F29BD8DC-ACD9-457E-982B-216C9AAC1AFB_1_105_c.webp" alt="Jannis Ziegltrum" class="jannis-photo r" loading="lazy" width="394" height="700">
+          <img src="assets/images/F29BD8DC-ACD9-457E-982B-216C9AAC1AFB_1_105_c.webp?v=2" alt="Jannis Ziegltrum" class="jannis-photo r" loading="lazy" width="394" height="700">
           <div class="r d1">
             <span class="tag" style="margin-bottom:1rem;">Wer steckt dahinter?</span>
             <h2 class="section-heading" style="margin-bottom:1rem;">Ich bin Jannis.</h2>
