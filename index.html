@@ -3478,19 +3478,6 @@
                     <span class="field-error" id="motiv-err">Bitte kurz beschreiben.</span>
                   </div>
 
-                  <div class="form-field">
-                    <label class="form-label" for="herkunft">Wie bist du auf das Retreat aufmerksam geworden? <span class="req">*</span></label>
-                    <div class="form-select-wrap">
-                      <select class="form-select" id="herkunft" name="herkunft" required>
-                        <option value="">Bitte auswählen…</option>
-                        <option value="instagram">Instagram</option>
-                        <option value="empfehlung">Empfehlung</option>
-                        <option value="google">Google</option>
-                        <option value="sonstiges">Sonstiges</option>
-                      </select>
-                    </div>
-                    <span class="field-error" id="herk-err">Bitte auswählen.</span>
-                  </div>
 
                 </div>
                 <div class="bk-nav">
@@ -4022,10 +4009,6 @@
       } else { if (zErr) zErr.classList.remove('visible'); }
 
       err('motivation', 'motiv-err', !$('#motivation').value.trim());
-      const hEl = document.getElementById('herkunft');
-      const hErr = document.getElementById('herk-err');
-      if (hEl && !hEl.value) { hEl.classList.add('error'); if (hErr) hErr.classList.add('visible'); valid = false; }
-      else if (hEl) { hEl.classList.remove('error'); if (hErr) hErr.classList.remove('visible'); }
     }
 
     return valid;
