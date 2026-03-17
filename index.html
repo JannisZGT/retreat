@@ -2216,6 +2216,24 @@
       padding: .35rem .9rem;
     }
   </style>
+
+  <!-- Meta Pixel Base Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1855934488520701');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1855934488520701&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Base Code -->
 </head>
 
 <body>
@@ -3771,10 +3789,19 @@
     window.scrollTo(0, 0);
   }
 
+  // Meta Pixel: ViewContent beim Laden der Hauptseite
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'ViewContent', { content_name: 'Sport & Abenteuerreise Retreat' });
+  }
+
   // Trigger links
   $$('.sp-trigger').forEach(el => {
     el.addEventListener('click', e => {
       e.preventDefault();
+      // Meta Pixel: InitiateCheckout wenn "Jetzt bewerben" geklickt wird
+      if (el.dataset.page === 'buchung' && typeof fbq !== 'undefined') {
+        fbq('track', 'InitiateCheckout');
+      }
       const page = el.dataset.page;
       if (page) openSubpage(page);
     });
@@ -4023,6 +4050,10 @@
         body: JSON.stringify(data)
       });
       if (res.ok) {
+        // Meta Pixel: Lead Event nach erfolgreicher Bewerbung
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'Lead', { content_name: 'Retreat Bewerbung', currency: 'EUR', value: 899 });
+        }
         $('#bkForm').style.display = 'none';
         $('#bkSuccess').style.display = 'flex';
       } else {
