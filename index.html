@@ -2355,7 +2355,7 @@
             <div class="stat-label">Plätze pro Retreat</div>
           </div>
           <div class="stat-card r d1">
-            <div class="stat-num"><span class="counter" data-target="6">0</span></div>
+            <div class="stat-num"><span class="counter" data-target="7">0</span></div>
             <div class="stat-label">Tage Abenteuer &amp; Sportprogramm</div>
           </div>
           <div class="stat-card r d2">
@@ -2932,7 +2932,7 @@
           <div style="background:var(--w);border:1.5px solid var(--s3);border-radius:var(--r2);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;transition:border-color .2s,box-shadow .2s;" onmouseover="this.style.borderColor='var(--g)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.borderColor='var(--s3)';this.style.boxShadow='none'">
             <div>
               <p style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem;">Woche 1 · ⚡ Frühbucher-Preis</p>
-              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">11. – 16. Mai 2026</p>
+              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">1. – 7. Juni 2026</p>
               <p style="font-size:.875rem;color:var(--s2);margin-bottom:.25rem;">7 Tage · Tirol, Österreich · <strong style="color:var(--acc);">Nur noch wenige Plätze</strong></p>
               <p style="font-family:var(--fd);font-weight:800;font-size:1.125rem;color:var(--g);">899 € <span style="font-size:.875rem;font-weight:500;color:var(--s2);">pro Person</span></p>
             </div>
@@ -2944,7 +2944,7 @@
           <div style="background:var(--w);border:1.5px solid var(--s3);border-radius:var(--r2);padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;transition:border-color .2s,box-shadow .2s;" onmouseover="this.style.borderColor='var(--g)';this.style.boxShadow='var(--sh2)'" onmouseout="this.style.borderColor='var(--s3)';this.style.boxShadow='none'">
             <div>
               <p style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:.35rem;">Woche 2 · ⚡ Frühbucher-Preis</p>
-              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">18. – 23. Mai 2026</p>
+              <p style="font-family:var(--fd);font-weight:700;font-size:1.25rem;color:var(--s0);margin-bottom:.25rem;">7. – 13. Juni 2026</p>
               <p style="font-size:.875rem;color:var(--s2);margin-bottom:.25rem;">7 Tage · Tirol, Österreich · <strong style="color:var(--acc);">Nur noch wenige Plätze</strong></p>
               <p style="font-family:var(--fd);font-weight:800;font-size:1.125rem;color:var(--g);">899 € <span style="font-size:.875rem;font-weight:500;color:var(--s2);">pro Person</span></p>
             </div>
@@ -3321,10 +3321,10 @@
                   <label class="form-label">Bevorzugte Woche <span class="req">*</span></label>
                   <div class="btn-group" id="woche-select" role="group" aria-label="Woche auswählen" style="flex-direction:column;align-items:stretch;">
                     <button class="btn-option" data-val="woche1" type="button" style="text-align:left;padding:.75rem 1rem;">
-                      <strong>Woche 1</strong> &nbsp;·&nbsp; 11. – 16. Mai 2026 &nbsp;<span style="color:var(--g);font-size:.8rem;">⚡ Frühbucher</span>
+                      <strong>Woche 1</strong> &nbsp;·&nbsp; 1. – 7. Juni 2026 &nbsp;<span style="color:var(--g);font-size:.8rem;">⚡ Frühbucher</span>
                     </button>
                     <button class="btn-option" data-val="woche2" type="button" style="text-align:left;padding:.75rem 1rem;">
-                      <strong>Woche 2</strong> &nbsp;·&nbsp; 18. – 23. Mai 2026 &nbsp;<span style="color:var(--g);font-size:.8rem;">⚡ Frühbucher</span>
+                      <strong>Woche 2</strong> &nbsp;·&nbsp; 7. – 13. Juni 2026 &nbsp;<span style="color:var(--g);font-size:.8rem;">⚡ Frühbucher</span>
                     </button>
                     <button class="btn-option" data-val="beide" type="button" style="text-align:left;padding:.75rem 1rem;">
                       <strong>Beide Wochen möglich</strong>
@@ -3888,7 +3888,7 @@
       $('#woche-val').value = btn.dataset.val;
       $('#woche-err').classList.remove('visible');
       // Summary aktualisieren
-      const wocheNames = { woche1: 'Woche 1 · 11.–16. Mai 2026', woche2: 'Woche 2 · 18.–23. Mai 2026', beide: 'Beide Wochen möglich' };
+      const wocheNames = { woche1: 'Woche 1 · 1.–7. Juni 2026', woche2: 'Woche 2 · 7.–13. Juni 2026', beide: 'Beide Wochen möglich' };
       const sw = $('#sum-woche'); if (sw) sw.textContent = wocheNames[btn.dataset.val] || btn.dataset.val;
     });
   });
