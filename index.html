@@ -6,13 +6,17 @@
   <title>Sport & Abenteuerreise — Alpen-Retreat Österreich</title>
   <meta name="description" content="7-Tage Sport- und Abenteuer-Retreat in den österreichischen Alpen. Wandern, Eisbaden, Sport & Spiele, Workshops. Max. 8 Teilnehmer.">
   <meta name="theme-color" content="#ffffff">
-  <!-- Preconnect für Fonts -->
+  <!-- Preconnect für Fonts + externe Domains -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin>
+  <link rel="dns-prefetch" href="https://connect.facebook.net">
+  <link rel="dns-prefetch" href="https://iframe.mediadelivery.net">
   <!-- Preload Hero-Bild (LCP) -->
   <link rel="preload" as="image" href="assets/images/hero.jpg" fetchpriority="high">
-  <!-- Fonts: nur benötigte Weights, display=swap für FOUT statt FOIT -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <!-- Fonts: async laden — blockiert kein Rendering mehr -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"></noscript>
 
   <style>
     /* ═══════════════════════════════════════════════
@@ -2250,23 +2254,6 @@
     }
   </style>
 
-  <!-- Meta Pixel Base Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1855934488520701');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1855934488520701&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Base Code -->
 </head>
 
 <body>
@@ -4112,5 +4099,22 @@
     </svg>
   </a>
 
+  <!-- Meta Pixel Base Code — am Body-Ende für bessere FCP -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1855934488520701');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1855934488520701&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Base Code -->
 </body>
 </html>
