@@ -13,7 +13,7 @@
   <link rel="dns-prefetch" href="https://connect.facebook.net">
   <link rel="dns-prefetch" href="https://iframe.mediadelivery.net">
   <!-- Preload Hero-Bild (LCP) -->
-  <link rel="preload" as="image" href="assets/images/hero.webp?v=2" imagesrcset="assets/images/hero-400.webp?v=2 400w, assets/images/hero-800.webp?v=2 800w, assets/images/hero.webp?v=2 1920w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/hero.webp?v=2" imagesrcset="assets/images/hero-400.webp?v=2 400w, assets/images/hero-800.webp?v=3 800w, assets/images/hero.webp?v=2 1920w" imagesizes="100vw" fetchpriority="high">
   <!-- Fonts: async laden — blockiert kein Rendering mehr -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"></noscript>
@@ -764,7 +764,7 @@
 
     /* Aktivitäten-Fotos */
     .bento-1 .bento-bg { background: #2D5A3D url('assets/images/activity-wandern.webp?v=2') center/cover no-repeat; }
-    .bento-2 .bento-bg { background: #1A3550 url('assets/images/activity-eisbaden.webp?v=2') center/cover no-repeat; }
+    .bento-2 .bento-bg { background: #1A3550 url('assets/images/activity-eisbaden.webp?v=3') center/cover no-repeat; }
     .bento-3 .bento-bg { background: #4A2810 url('assets/images/activity-sport.webp?v=2') center/cover no-repeat; }
     .bento-4 .bento-bg { background: #2A3E1A url('assets/images/activity-workshops.webp?v=2') center/cover no-repeat; }
 
@@ -2339,7 +2339,7 @@
 
       <div class="hero-photo-wrap" aria-hidden="true">
         <img src="assets/images/hero.webp?v=2"
-             srcset="assets/images/hero-400.webp?v=2 400w, assets/images/hero-800.webp?v=2 800w, assets/images/hero.webp?v=2 1920w"
+             srcset="assets/images/hero-400.webp?v=2 400w, assets/images/hero-800.webp?v=3 800w, assets/images/hero.webp?v=2 1920w"
              sizes="100vw"
              alt="Luftaufnahme der österreichischen Alpen — grüne Täler und kristallklare Seen"
              class="hero-photo"
@@ -2468,7 +2468,7 @@
 
           <div class="r d2">
             <div class="retreat-img-card">
-              <img src="assets/images/dji_fly_20250913_143428_0171_1758134322249_timed.webp?v=2" alt="Gruppe am Gipfelkreuz beim Sport &amp; Abenteuerreise Retreat" class="retreat-img" loading="lazy" width="1400" height="935">
+              <img src="assets/images/dji_fly_20250913_143428_0171_1758134322249_timed.webp?v=3" srcset="assets/images/dji_fly_500.webp?v=2 500w, assets/images/dji_fly_20250913_143428_0171_1758134322249_timed.webp?v=3 787w" sizes="(max-width:768px) 100vw, 400px" alt="Gruppe am Gipfelkreuz beim Sport &amp; Abenteuerreise Retreat" class="retreat-img" loading="lazy" width="1400" height="935">
               <div class="floating-badge" aria-hidden="true">
                 <div class="badge-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -2514,7 +2514,7 @@
           </article>
 
           <!-- Eisbaden -->
-          <!-- FOTO EINFÜGEN: assets/images/activity-eisbaden.webp?v=2 -->
+          <!-- FOTO EINFÜGEN: assets/images/activity-eisbaden.webp?v=3 -->
           <article class="bento-card bento-2 r d1" aria-label="Eisbaden">
             <div class="bento-bg" role="img" aria-label="Eisbaden in kristallklarem Wasser"></div>
             <div class="bento-overlay" aria-hidden="true"></div>
@@ -4142,18 +4142,22 @@
     </svg>
   </a>
 
-  <!-- Meta Pixel Base Code — am Body-Ende für bessere FCP -->
+  <!-- Meta Pixel — verzögert nach 3s (kein Einfluss auf Tracking-Qualität) -->
   <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1855934488520701');
-  fbq('track', 'PageView');
+  window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1855934488520701');
+      fbq('track', 'PageView');
+    }, 3000);
+  });
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1855934488520701&ev=PageView&noscript=1"
