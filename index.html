@@ -3820,11 +3820,9 @@
   const stimGrid = document.querySelector('.stimmen-grid');
   const stimDots = document.querySelectorAll('.stimmen-dot');
   if (stimGrid && stimDots.length) {
-    let stimCardW = 0;
-    requestAnimationFrame(() => { stimCardW = stimGrid.offsetWidth * 0.76 + 16; }); // nach erstem Paint lesen, kein Init-Reflow
-    window.addEventListener('resize', () => { stimCardW = stimGrid.offsetWidth * 0.76 + 16; }, { passive: true });
+    let stimCardW = window.innerWidth * 0.76 + 16; // 76vw + gap, kein DOM-Layout-Read
+    window.addEventListener('resize', () => { stimCardW = window.innerWidth * 0.76 + 16; }, { passive: true });
     stimGrid.addEventListener('scroll', () => {
-      if (!stimCardW) return;
       const idx = Math.min(Math.round(stimGrid.scrollLeft / stimCardW), stimDots.length - 1);
       stimDots.forEach((d, i) => d.classList.toggle('active', i === idx));
     }, { passive: true });
