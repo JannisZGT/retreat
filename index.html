@@ -80,6 +80,20 @@
       transition: width .1s linear;
       border-radius: 0 2px 2px 0;
     }
+    @supports (animation-timeline: scroll()) {
+      #progress-bar {
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+        transition: none;
+        animation: pb-grow linear both;
+        animation-timeline: scroll();
+      }
+      @keyframes pb-grow {
+        from { transform: scaleX(0); }
+        to   { transform: scaleX(1); }
+      }
+    }
 
     /* ═══════════════════════════════════════════════
        SKIP LINK
@@ -3619,14 +3633,16 @@
   const rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   /* ── Scroll Progress Bar ── */
-  const bar = $('#progress-bar');
-  let scrollMax = 0;
-  requestAnimationFrame(() => { scrollMax = document.documentElement.scrollHeight - window.innerHeight; }); // nach erstem Paint lesen, kein Init-Reflow
-  new ResizeObserver(() => { scrollMax = document.documentElement.scrollHeight - window.innerHeight; }).observe(document.documentElement);
-  function updateBar() {
-    bar.style.width = (scrollMax > 0 ? (window.scrollY / scrollMax * 100) : 0) + '%';
+  if (!CSS.supports('animation-timeline', 'scroll()')) {
+    const bar = $('#progress-bar');
+    let scrollMax = 0;
+    requestAnimationFrame(() => { scrollMax = document.documentElement.scrollHeight - window.innerHeight; });
+    new ResizeObserver(() => { scrollMax = document.documentElement.scrollHeight - window.innerHeight; }).observe(document.documentElement);
+    function updateBar() {
+      bar.style.width = (scrollMax > 0 ? (window.scrollY / scrollMax * 100) : 0) + '%';
+    }
+    window.addEventListener('scroll', updateBar, { passive: true });
   }
-  window.addEventListener('scroll', updateBar, { passive: true });
 
   /* ── Nav Scroll ── */
   const nav = $('#nav');
