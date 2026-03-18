@@ -3620,9 +3620,10 @@
 
   /* ── Scroll Progress Bar ── */
   const bar = $('#progress-bar');
+  let scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+  new ResizeObserver(() => { scrollMax = document.documentElement.scrollHeight - window.innerHeight; }).observe(document.documentElement);
   function updateBar() {
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (max > 0 ? (window.scrollY / max * 100) : 0) + '%';
+    bar.style.width = (scrollMax > 0 ? (window.scrollY / scrollMax * 100) : 0) + '%';
   }
   window.addEventListener('scroll', updateBar, { passive: true });
 
@@ -3802,9 +3803,11 @@
   const stimGrid = document.querySelector('.stimmen-grid');
   const stimDots = document.querySelectorAll('.stimmen-dot');
   if (stimGrid && stimDots.length) {
-    let stimCardW = stimGrid.offsetWidth * 0.76 + 16; // 76vw + gap, einmalig cachen
+    let stimCardW = 0;
+    requestAnimationFrame(() => { stimCardW = stimGrid.offsetWidth * 0.76 + 16; }); // nach erstem Paint lesen, kein Init-Reflow
     window.addEventListener('resize', () => { stimCardW = stimGrid.offsetWidth * 0.76 + 16; }, { passive: true });
     stimGrid.addEventListener('scroll', () => {
+      if (!stimCardW) return;
       const idx = Math.min(Math.round(stimGrid.scrollLeft / stimCardW), stimDots.length - 1);
       stimDots.forEach((d, i) => d.classList.toggle('active', i === idx));
     }, { passive: true });
